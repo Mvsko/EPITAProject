@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit 
 {
-    public int vie{get;set;}
+   public int vie{get;set;} 
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
@@ -39,7 +39,11 @@ public class Unit
     {
         
     }
-
+/// <summary>
+/// Fonction qui fait subir des dégats au régiment
+/// </summary>
+/// <param name="dommage">le montant des dégats</param>
+/// <param name="type">par le type d'arme</param>
     public void defendre(int dommage, string type)
     {
         if (type == "epee")
@@ -65,5 +69,5 @@ public class Unit
             vie -= dommage;
         }
 
-    }
+}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
 
-public class UnitMovement : MonoBehaviour
+public class RegimentMovement : MonoBehaviour
 {
     Camera cam;
     NavMeshAgent agent;
@@ -14,8 +14,10 @@ public class UnitMovement : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main;
-        agent = GetComponent<NavMeshAgent>();
+        cam = Camera.main;  // Camera principale
+
+        // initialisation de l'ia pour le pathfinding
+        agent = GetComponent<NavMeshAgent>(); 
     }
 
     private void Update()
@@ -25,6 +27,7 @@ public class UnitMovement : MonoBehaviour
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
+            //Si le raycast arrive au sol :
            if(Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
            {
             agent.SetDestination(hit.point);
