@@ -18,6 +18,9 @@ public class RegimentMovement : MonoBehaviour
     NavMeshAgent agent;
     public LayerMask ground;
     //bool formation;
+
+    private RaycastHit hitInfoDown;
+    private RaycastHit hitInfoUp;
     
     public RegimentSelectionManager.mouvementTypeList mouvementTypeRegiment;
 
@@ -52,8 +55,10 @@ public class RegimentMovement : MonoBehaviour
                 {
                     if (RegimentSelectionManager.Instance.regimentsSelected[i] == gameObject)
                     {
-                       
 
+                        float horizontalInput = Input.GetAxis("Horizontal");
+                        float verticalInput = Input.GetAxis("Vertical");
+                       
                         if (mouvementTypeRegiment is RegimentSelectionManager.mouvementTypeList.Line)
                         {
                             //le regiment se place en fontion de la direction de la camera en ligne
@@ -99,15 +104,13 @@ public class RegimentMovement : MonoBehaviour
                             UnityEngine.Vector3 compenser = new UnityEngine.Vector3(3f * Mathf.Cos(angle * Mathf.Deg2Rad), 0f, 3f * Mathf.Sin(angle * Mathf.Deg2Rad));
                             agent.SetDestination(hit.point + compenser*(regimentselectnumber/4) );
                         }
-                        
-                         //le regiment regarde dans la direction de la camera
+
+                    
+                        //le regiment regarde dans la direction de la camera
                         agent.updateRotation = true;
                         agent.transform.rotation = cam.transform.rotation;
                         agent.updateRotation = false;
-                        
-
-                        
-
+                         
                         
                         
                     }
