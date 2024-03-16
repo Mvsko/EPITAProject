@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Unit 
 {
-   public int vie{get;set;} 
+    public IUnitType model{get;set;}
+    public int vie{get;set;} 
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
@@ -14,21 +17,27 @@ public class Unit
 
     public Unit (string type)
     {
-        if (type == "legionnaire")
+
+        if (type == "Hastati")
         {
-            vie = 100;
-            moral = 30;
-            armure = 40;
-            degat = 40;
-            vitesse = 25;
-            arme = "epee";
+          model = new Hastati();
         }
-        vie = 60;
-        moral = 25;
-        armure = 30;
-        degat = 30;
-        vitesse = 40;
-        arme = "lance";
+        if (type == "Triarii")
+        {
+          model = new Triarii();
+        }
+        else
+        {
+          model = new Hastati();  
+        }
+
+        vie = model.vie;
+       
+        armure = model.armure;
+        degat = model.degat;
+        vitesse = model.vitesse;
+        arme = model.arme;
+
     }
     void Start()
     {
@@ -44,30 +53,12 @@ public class Unit
 /// </summary>
 /// <param name="dommage">le montant des dégats</param>
 /// <param name="type">par le type d'arme</param>
-    public void defendre(int dommage, string type)
+    public void defendre(int dommage, string typeWeapon)
     {
-        if (type == "epee")
-        {
-            if (dommage/armure <= dommage/2)
-            {
-                if (armure > 0)
-                {
-                    armure -= 1;
-                }
-                moral -= 1;
-                vie -= dommage/2;
-            }
-            else
-            {
-                moral -= 2;
-                vie -= dommage;
-            }
-        }
-        else
-        {
-            moral -= 2;
-            vie -= dommage;
-        }
+    }
 
-}
+    public void attack()
+    {
+
+    }
 }

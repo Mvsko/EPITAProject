@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class Regiment : MonoBehaviour
 {
-     public List<Unit> listUnite {get;set;}
+    public string typeRegiment;
+    public List<Unit> listUnite {get;set;}
     public bool dead = false;
     void Start()
     {
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
         RegimentSelectionManager.Instance.allRegimentsList.Add(gameObject);
-         listUnite = new List<Unit>();
+        listUnite = new List<Unit>();
         for (int i = 0; i < 100; i++)
         {
-            listUnite.Add(new Unit("legionnaire"));
+            listUnite.Add(new Unit(typeRegiment));
         }
+
+        
     }
 
     void Update ()
