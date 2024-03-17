@@ -25,6 +25,7 @@ public class Regiment : MonoBehaviour
     {
         if(dead)
         {
+            
             listUnite.Clear();
         }
         if(listUnite.Count == 0)
@@ -35,6 +36,7 @@ public class Regiment : MonoBehaviour
 
     private void OnDestroy()
     {
+        RegimentSelectionManager.Instance.regimentsSelected.Remove(gameObject);
         RegimentSelectionManager.Instance.allRegimentsList.Remove(gameObject);
         Destroy(gameObject);
         
