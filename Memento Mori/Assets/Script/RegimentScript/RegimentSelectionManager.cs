@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -141,9 +142,13 @@ public class RegimentSelectionManager : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-           if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable) && hit.collider.CompareTag(gameObject.tag)!= true)
+            
+            
+           if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable) && hit.collider.CompareTag(regimentsSelected[0].tag)!= true)
            {
+                Debug.Log(regimentsSelected[0].tag);
+                Debug.Log(hit.collider.gameObject.tag);
+                
                 Debug.Log("Enemy hovered with mouse");
 
                 attackCursorVisible = true;

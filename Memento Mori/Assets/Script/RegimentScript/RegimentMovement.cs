@@ -123,6 +123,7 @@ public class RegimentMovement : MonoBehaviour
             {
                 agent.updateRotation = true;
                 agent.SetDestination(hit.point);
+                isCommandedToMove = false;
                 
             }
             

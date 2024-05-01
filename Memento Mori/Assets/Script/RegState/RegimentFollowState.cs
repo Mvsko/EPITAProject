@@ -29,7 +29,7 @@ public class RegimentFollowState : StateMachineBehaviour
         animator.SetBool("IsFollowing", false);
        }
        else
-       {
+       {        
 
         // If there is no other direct command
         if(animator.transform.GetComponent<RegimentMovement>().isCommandedToMove == false && attackController.targetToAttack != null)
@@ -37,24 +37,34 @@ public class RegimentFollowState : StateMachineBehaviour
             // Moving Regiment Towards Enemy
             agent.SetDestination(attackController.targetToAttack.position);
             animator.transform.LookAt(attackController.targetToAttack);
+
+            //Should Regiment Transition to Attack State ?
+            float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
+            if (distanceFromTarget <= attackingDistance)
+            {
+                Debug.Log("ATTACK State ");
+                agent.SetDestination(animator.transform.position);
+                animator.SetBool("IsAttacking",true);
+            }
         }
         
         
-        // Should Regiment Transition to Attack State ?
-        if( attackController.targetToAttack != null)
+        //Should Regiment Transition to Attack State ?
+        /*if( attackController.targetToAttack != null)
         {
             float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
             
             if (distanceFromTarget <= attackingDistance)
             {
                 Debug.Log("ATTACK");
-                //animator.SetBool("IsAttacking",true);
+                agent.SetDestination(animator.transform.position);
+                animator.SetBool("IsAttacking",true);
             }
             else{
                 Debug.Log(distanceFromTarget);
             }
             }
-        
+        */
        }
 
         

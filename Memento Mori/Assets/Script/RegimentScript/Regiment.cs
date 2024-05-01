@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,6 +6,11 @@ using UnityEngine;
 
 public class Regiment : MonoBehaviour
 {
+
+    public float regimentHealth;
+    public float regimentMaxHealth;
+    public HealthTracker healthTracker;
+
     public string typeRegiment;
     public List<Unit> listUnite {get;set;}
     public bool dead = false;
@@ -14,8 +20,14 @@ public class Regiment : MonoBehaviour
     {
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
         RegimentSelectionManager.Instance.allRegimentsList.Add(gameObject);
+
+        // Création des stats du régiments
+        regimentHealth = regimentMaxHealth;
+        UpdateHealthUI() ;
+
+        //Création des unités du régiments
         listUnite = new List<Unit>();
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
             listUnite.Add(new Unit(typeRegiment));
         }
@@ -45,6 +57,8 @@ public class Regiment : MonoBehaviour
         
     }
 
+    
+
     void Update ()
     {
         if(dead)
@@ -55,6 +69,22 @@ public class Regiment : MonoBehaviour
         if(listUnite.Count == 0)
         {
             OnDestroy();
+        }
+    }
+    public void TakeDamage(int damageToInflict)
+    {
+        regimentHealth -= damageToInflict;
+        UpdateHealthUI();
+    }
+
+    private void UpdateHealthUI()
+    {
+        healthTracker.UpdateSliderValue(regimentHealth,regimentMaxHealth);
+        if (regimentHealth <= 0)
+        {
+            // Dying Logic
+            dead = true;
+            Update();
         }
     }
 
