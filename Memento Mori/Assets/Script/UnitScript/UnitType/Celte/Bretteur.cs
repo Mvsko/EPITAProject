@@ -14,7 +14,7 @@ public class Bretteur : IUnitType
 
     public Bretteur ()
     {
-            vie = 100;
+            vie = 150;
             moral = 40;
             armure = 40;
             degat = 40;

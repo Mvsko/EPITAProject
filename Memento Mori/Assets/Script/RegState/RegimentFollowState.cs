@@ -10,6 +10,7 @@ public class RegimentFollowState : StateMachineBehaviour
     NavMeshAgent agent;
     
     public float attackingDistance;
+    private float FollowTime = 2f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,6 +18,7 @@ public class RegimentFollowState : StateMachineBehaviour
        attackController =  animator.GetComponent<AttackController>();
        agent = animator.GetComponent<NavMeshAgent>();
        attackingDistance = 2.5f;
+       
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,6 +28,7 @@ public class RegimentFollowState : StateMachineBehaviour
 
        if (attackController.targetToAttack == null)
        {
+        Debug.Log("Idle State");
         animator.SetBool("IsFollowing", false);
        }
        else
@@ -34,8 +37,17 @@ public class RegimentFollowState : StateMachineBehaviour
         // If there is no other direct command
         if(animator.transform.GetComponent<RegimentMovement>().isCommandedToMove == false && attackController.targetToAttack != null)
         {
-            // Moving Regiment Towards Enemy
+        // Moving Regiment Towards Enemy
+            if (FollowTime <= 0)
+            {
             agent.SetDestination(attackController.targetToAttack.position);
+            FollowTime = 2f;
+            }
+            else
+            {
+            FollowTime -= Time.deltaTime;
+            }
+            
             animator.transform.LookAt(attackController.targetToAttack);
 
             //Should Regiment Transition to Attack State ?
@@ -48,9 +60,9 @@ public class RegimentFollowState : StateMachineBehaviour
             }
         }
         
-        
+        /*
         //Should Regiment Transition to Attack State ?
-        /*if( attackController.targetToAttack != null)
+        if( attackController.targetToAttack != null)
         {
             float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
             
@@ -66,6 +78,7 @@ public class RegimentFollowState : StateMachineBehaviour
             }
         */
        }
+       
 
         
 

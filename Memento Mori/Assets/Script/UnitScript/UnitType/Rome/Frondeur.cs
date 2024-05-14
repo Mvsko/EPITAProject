@@ -14,7 +14,7 @@ public class Frondeur :  IUnitType
 
     public Frondeur ()
     {
-            vie = 100;
+            vie = 70;
             moral = 40;
             armure = 40;
             degat = 40;

@@ -41,7 +41,11 @@ public class RegimentAttackState : StateMachineBehaviour
          
 
          // Reste en mvt vers l'ennemi
-         agent.SetDestination(attackController.targetToAttack.position);
+         if(animator.GetComponent<Regiment>().dead == false)
+         {
+            agent.SetDestination(attackController.targetToAttack.position);
+         }
+         
 
 
          if (attackTimer <= 0)

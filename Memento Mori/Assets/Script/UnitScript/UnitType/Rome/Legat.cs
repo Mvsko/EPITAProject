@@ -14,7 +14,7 @@ public class Legat : IUnitType
     public string description{get;set;}
     public Legat ()
     {
-            vie = 100;
+            vie = 120;
             moral = 40;
             armure = 40;
             degat = 40;

@@ -15,7 +15,7 @@ public class Hastati :  IUnitType
 
     public Hastati ()
     {
-            vie = 60;
+            vie = 150;
             moral = 30;
             armure = 30;
             degat = 30;

@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 1258368688}
   - component: {fileID: 1258368687}
   - component: {fileID: 1258368686}
+  - component: {fileID: 1258368689}
   m_Layer: 5
   m_Name: Button Exit
   m_TagString: Untagged
@@ -861,7 +862,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1258368687}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1258368689}
+        m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
+        m_MethodName: doExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1258368687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,6 +913,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258368684}
   m_CullTransparentMesh: 1
+--- !u!114 &1258368689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258368684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41179f1fdb913a748ba068b55d7acddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1468196065
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1108,7 +1133,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0.19607845, g: 0.19607845, b: 0.19607845, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1188,7 +1213,7 @@ GameObject:
   - component: {fileID: 1718562809}
   - component: {fileID: 1718562808}
   m_Layer: 5
-  m_Name: Button Multijoeur
+  m_Name: Button Multijoueur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,6 +1333,7 @@ GameObject:
   - component: {fileID: 2089347640}
   - component: {fileID: 2089347639}
   - component: {fileID: 2089347638}
+  - component: {fileID: 2089347641}
   m_Layer: 5
   m_Name: Button Campagne
   m_TagString: Untagged
@@ -1378,7 +1404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2089347639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089347641}
+        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
+        m_MethodName: MoveToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089347639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1455,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089347636}
   m_CullTransparentMesh: 1
+--- !u!114 &2089347641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089347636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41179f1fdb913a748ba068b55d7acddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chasseur :  IUnitType
+public class ChasseurNu :  IUnitType
 {
     public int vie{get;set;} 
     public int moral{get;set;}
@@ -12,9 +12,9 @@ public class Chasseur :  IUnitType
     public string arme{get;set;}
     public string description{get;set;}
 
-    public Chasseur ()
+    public ChasseurNu ()
     {
-            vie = 100;
+            vie = 60;
             moral = 40;
             armure = 40;
             degat = 40;

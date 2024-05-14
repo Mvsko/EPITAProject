@@ -21,9 +21,6 @@ public class Regiment : MonoBehaviour
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
         RegimentSelectionManager.Instance.allRegimentsList.Add(gameObject);
 
-        // Création des stats du régiments
-        regimentHealth = regimentMaxHealth;
-        UpdateHealthUI() ;
 
         //Création des unités du régiments
         listUnite = new List<Unit>();
@@ -31,6 +28,13 @@ public class Regiment : MonoBehaviour
         {
             listUnite.Add(new Unit(typeRegiment));
         }
+        
+        regimentMaxHealth = listUnite[0].model.vie;
+        regimentHealth = regimentMaxHealth;
+        // Création des stats du régiments
+        //regimentHealth = regimentMaxHealth;
+        
+        UpdateHealthUI() ;
 
         // Texture du blason
         blason = Resources.Load($"Materials/Blason/BlasonMaterial/{typeRegiment}Blason",typeof(Material)) as Material;

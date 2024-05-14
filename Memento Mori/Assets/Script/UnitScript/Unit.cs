@@ -17,7 +17,7 @@ public class Unit
 
     public Unit (string type)
     {
-
+        //ROME
         if (type == "Hastati")
         {
           model = new Hastati();
@@ -26,10 +26,49 @@ public class Unit
         {
           model = new Triarii();
         }
-        else
+        if(type == "Legat")
         {
-          model = new Hastati();  
+          model = new Legat();  
         }
+        if(type == "BalisteRomaine")
+        {
+          model = new BalisteRomaine();  
+        }
+        if(type == "Equites")
+        {
+          model = new Equites();  
+        }
+        if(type == "Frondeur")
+        {
+          model = new Frondeur();  
+        }
+        //CELTE
+        if(type == "Bretteur")
+        {
+          model = new Bretteur();  
+        }
+        if(type == "ChasseurNu")
+        {
+          model = new ChasseurNu();  
+        }
+        if(type == "GuerrierNu")
+        {
+          model = new GuerrierNu();  
+        }
+        if(type == "NobleBretteur")
+        {
+          model = new NobleBretteur();  
+        }
+        if(type == "Onagre")
+        {
+          model = new Onagre();  
+        }
+        if(type == "Trimarcisia")
+        {
+          model = new Trimarcisia();  
+        }
+        
+
 
         vie = model.vie;
        

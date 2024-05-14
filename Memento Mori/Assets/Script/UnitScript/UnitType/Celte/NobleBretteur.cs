@@ -14,7 +14,7 @@ public class NobleBretteur : IUnitType
     public string description{get;set;}
     public NobleBretteur ()
     {
-            vie = 100;
+            vie = 350;
             moral = 40;
             armure = 40;
             degat = 40;

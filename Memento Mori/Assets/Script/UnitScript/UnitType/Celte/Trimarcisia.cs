@@ -14,7 +14,7 @@ public class Trimarcisia :  IUnitType
 
     public Trimarcisia ()
     {
-            vie = 100;
+            vie = 200;
             moral = 40;
             armure = 40;
             degat = 40;

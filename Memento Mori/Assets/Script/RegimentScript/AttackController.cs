@@ -10,6 +10,9 @@ public class AttackController : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(gameObject.tag);
+        Debug.Log(other.tag);
+
         if (other.CompareTag(gameObject.tag)!=true && targetToAttack == null)
         {
             targetToAttack = other.transform;
@@ -23,7 +26,7 @@ public class AttackController : MonoBehaviour
             targetToAttack = null;
         }
     }
-
+    
     private void OnDrawGizmos()
     {
        // Gismos Follow

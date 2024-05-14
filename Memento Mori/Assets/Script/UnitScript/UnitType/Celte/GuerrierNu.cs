@@ -15,7 +15,7 @@ public class GuerrierNu :  IUnitType
 
     public GuerrierNu ()
     {
-            vie = 60;
+            vie = 110;
             moral = 30;
             armure = 30;
             degat = 30;

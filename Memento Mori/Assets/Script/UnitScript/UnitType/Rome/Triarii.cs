@@ -14,7 +14,7 @@ public class Triarii : IUnitType
 
     public Triarii ()
     {
-            vie = 100;
+            vie = 250;
             moral = 40;
             armure = 40;
             degat = 40;
