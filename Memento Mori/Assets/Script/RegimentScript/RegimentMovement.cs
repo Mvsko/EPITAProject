@@ -14,14 +14,15 @@ using UnityEngine.UIElements;
 
 public class RegimentMovement : MonoBehaviour
 {
-    Camera cam;
-    NavMeshAgent agent;
-    public LayerMask ground;
+    Camera cam;                 // Référence à la caméra principale
+    NavMeshAgent agent;         // Référence à l'agent de navigation
+    public LayerMask ground;       // Masque de collision pour le sol
     //bool formation;
 
     private RaycastHit hitInfoDown;
     private RaycastHit hitInfoUp;
     
+    // Variables pour déterminer si le régiment est commandé de bouger et quel type de mouvement il doit effectuer
     public bool isCommandedToMove;
     public RegimentSelectionManager.mouvementTypeList mouvementTypeRegiment;
 
@@ -38,7 +39,7 @@ public class RegimentMovement : MonoBehaviour
 
     private void Update()
     {
-
+        // Si le joueur clique avec le bouton droit de la souris
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
@@ -61,7 +62,7 @@ public class RegimentMovement : MonoBehaviour
 
                         float horizontalInput = Input.GetAxis("Horizontal");
                         float verticalInput = Input.GetAxis("Vertical");
-                       
+                        // Détermine le mouvement en fonction du type de formation choisi
                         if (mouvementTypeRegiment is RegimentSelectionManager.mouvementTypeList.Line)
                         {
                             //le regiment se place en fontion de la direction de la camera en ligne
@@ -109,7 +110,7 @@ public class RegimentMovement : MonoBehaviour
                         }
 
                     
-                        //le regiment regarde dans la direction de la camera
+                        // Oriente le régiment dans la direction de la caméra
                         agent.updateRotation = true;
                         agent.transform.rotation = cam.transform.rotation;
                         agent.updateRotation = false;
@@ -121,6 +122,7 @@ public class RegimentMovement : MonoBehaviour
             }
             else
             {
+                // Déplace un seul régiment vers le point cliqué
                 agent.updateRotation = true;
                 agent.SetDestination(hit.point);
                 isCommandedToMove = false;
@@ -130,6 +132,7 @@ public class RegimentMovement : MonoBehaviour
            } 
 
         }
+        // Si le régiment n'a pas de chemin ou s'il est à destination, il n'est plus commandé de bouger
         if(agent.hasPath == false || agent.remainingDistance <= agent.stoppingDistance)
         {
             isCommandedToMove = false;

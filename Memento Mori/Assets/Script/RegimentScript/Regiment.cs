@@ -7,15 +7,17 @@ using UnityEngine;
 public class Regiment : MonoBehaviour
 {
 
-    public float regimentHealth;
-    public float regimentMaxHealth;
+    public float regimentHealth;            // Points de vie actuels du régiment
+    public float regimentMaxHealth;         // Points de vie maximum du régiment
+
+    // Référence au HealthTracker pour mettre à jour l'interface de la vie
     public HealthTracker healthTracker;
 
     public string typeRegiment;
-    public List<Unit> listUnite {get;set;}
+    public List<Unit> listUnite {get;set;}      // Liste des unités composant ce régiment
     public bool dead = false;
-    public Material blason;
-    public Material couleur;
+    public Material blason;                     // Matériel du blason du régiment
+    public Material couleur;                     // Matériel de couleur du régiment
     void Start()
     {
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
@@ -34,9 +36,10 @@ public class Regiment : MonoBehaviour
         // Création des stats du régiments
         //regimentHealth = regimentMaxHealth;
         
+        // Met à jour l'interface utilisateur
         UpdateHealthUI() ;
 
-        // Texture du blason
+        // Charge le matériau du blason du régiment
         blason = Resources.Load($"Materials/Blason/BlasonMaterial/{typeRegiment}Blason",typeof(Material)) as Material;
         gameObject.transform.GetChild(8).gameObject.GetComponent<Renderer>().material = blason;
 
@@ -65,6 +68,7 @@ public class Regiment : MonoBehaviour
 
     void Update ()
     {
+        // Si le régiment est mort, efface la liste des unités
         if(dead)
         {
             
@@ -75,12 +79,15 @@ public class Regiment : MonoBehaviour
             OnDestroy();
         }
     }
+
+    // Méthode pour infliger des dégâts au régiment
     public void TakeDamage(int damageToInflict)
     {
         regimentHealth -= damageToInflict;
         UpdateHealthUI();
     }
 
+    // Méthode pour mettre à jour l'interface utilisateur
     private void UpdateHealthUI()
     {
         healthTracker.UpdateSliderValue(regimentHealth,regimentMaxHealth);
@@ -91,7 +98,8 @@ public class Regiment : MonoBehaviour
             Update();
         }
     }
-
+    
+    // Méthode appelée à la destruction du régiment
     private void OnDestroy()
     {
         RegimentSelectionManager.Instance.regimentsSelected.Remove(gameObject);
