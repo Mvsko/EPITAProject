@@ -12,6 +12,7 @@ public class EventsManagerCampaign : MonoBehaviour
     private List<string> TimeSaison = new List<string>(){"Printemps","Eté","Automne","Hivers"};
     private int TimeYear;
     private int TimeSaisonId;
+    public PlayerInventory Inventory;
 
     // Liste des événements de campagne
     public List<CampaingEvents> eventsList= new List<CampaingEvents>();
@@ -70,12 +71,13 @@ public class EventsManagerCampaign : MonoBehaviour
     {
         //Changement du temps
         TimeSaisonId +=1;
-
-        if (TimeSaisonId >= 3)
+        Inventory.money += Inventory.Income-Inventory.Sales;
+        
+        if (TimeSaisonId > 3)
         {
             TimeSaisonId = 0;
             TimeYear +=1;
-             if (TimeYear > 0)
+             if (TimeYear == 0)
             {
             TimePeriod = "Apr J.C";
             }
@@ -92,11 +94,11 @@ public class EventsManagerCampaign : MonoBehaviour
         int eventindex = Random.Range(1,eventsList.Count*3);
 
         // Si l'indice est valide, active la partie de l'événement correspondante
-        if(eventindex > 0 && eventindex < 4)
+        if(eventindex > 0&& eventindex < 3)
         {
             Debug.Log(eventsList[eventindex].Title);
             // Active l'objet enfant correspondant à l'événement
-            EventsPart.transform.GetChild(eventindex).gameObject.SetActive(true);
+            EventsPart.transform.GetChild(eventindex+3).gameObject.SetActive(true);
         }
         
     }
