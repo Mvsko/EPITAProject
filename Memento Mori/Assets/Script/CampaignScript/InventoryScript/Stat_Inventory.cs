@@ -47,14 +47,8 @@ public class  PlayerInventory : MonoBehaviour
         Sales = 0;
         Income = 5;
         AddRegimentInventory(0,1);
-        AddRegimentInventory(1,1);
-        AddRegimentInventory(2,1);
-        AddRegimentInventory(3,1);
-        AddRegimentInventory(4,2);
-        AddRegimentInventory(5,2);
-        AddRegimentInventory(6,4);
-        AddRegimentInventory(7,4);
-        AddRegimentInventory(8,4);
+        
+
     }
    
     void Update()

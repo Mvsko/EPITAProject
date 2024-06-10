@@ -28,7 +28,7 @@ public class RegimentFollowState : StateMachineBehaviour
 
        if (attackController.targetToAttack == null)
        {
-        Debug.Log("Idle State");
+        //Debug.Log("Idle State");
         animator.SetBool("IsFollowing", false);
        }
        else
@@ -54,7 +54,7 @@ public class RegimentFollowState : StateMachineBehaviour
             float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
             if (distanceFromTarget <= attackingDistance)
             {
-                Debug.Log("ATTACK State ");
+                //Debug.Log("ATTACK State ");
                 agent.SetDestination(animator.transform.position);
                 animator.SetBool("IsAttacking",true);
             }

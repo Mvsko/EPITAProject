@@ -119,7 +119,7 @@ public class RegimentSelectionBox : MonoBehaviour
     {
         foreach (var regiment in RegimentSelectionManager.Instance.allRegimentsList)
         {
-            if (selectionBox.Contains(myCam.WorldToScreenPoint(regiment.transform.position)))
+            if (selectionBox.Contains(myCam.WorldToScreenPoint(regiment.transform.position)) && regiment.CompareTag("Team1"))
             {
                 RegimentSelectionManager.Instance.DragSelect(regiment);
             }

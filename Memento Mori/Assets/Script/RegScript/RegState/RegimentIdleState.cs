@@ -19,7 +19,7 @@ public class RegimentIdleState : StateMachineBehaviour
        
         if (attackController.targetToAttack != null)
         {
-            Debug.Log("Follow State ");
+            //Debug.Log("Follow State ");
             animator.SetBool("IsFollowing",true);
         }
 

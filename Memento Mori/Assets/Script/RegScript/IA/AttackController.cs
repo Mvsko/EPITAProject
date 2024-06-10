@@ -7,26 +7,38 @@ public class AttackController : MonoBehaviour
 {
     public Transform targetToAttack;    // Transform de la cible à attaquer
     public int unitDamage;               // Dégâts infligés par cette unité
+
+    public List<Collider> targetsCollider = new List<Collider>();
     
     // Méthode appelée lorsque le collider de cet objet entre en collision avec un regiment
+
+    //GISMO POUR l'IA
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.tag);
-        Debug.Log(other.tag);
-
         // Vérifie si l'autre collider n'appartient pas à la même équipe
-        if (other.CompareTag(gameObject.tag)!=true && targetToAttack == null)
+        if (gameObject.transform.GetComponent<Regiment>().IAEnabled && other.gameObject.layer == LayerMask.NameToLayer("Clickable") && other.tag!=gameObject.tag && targetToAttack == null)
         {
+            if(targetsCollider.Contains(other)==false)
+            {
+                targetsCollider.Add(other);
+            }
+
+
+            Debug.Log("OnTriggerEnter");
             targetToAttack = other.transform;
         }
     }
 
-    // Méthode appelée lorsque le collider de cet objet cesse de colliser avec un autre collider
+    // Méthode appelée lorsque le collider de cet objet cesse de rentrer en contact avec un autre collider
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(gameObject.tag) && targetToAttack != null)
+        Debug.Log("OnTriggerExit");
+        
+        Debug.Log($"{other.tag!=gameObject.tag }{targetToAttack != null}");
+        if (other.tag!=gameObject.tag && targetToAttack != null && gameObject.transform.GetComponent<Regiment>().IAEnabled )
         {
             targetToAttack = null;
+            targetsCollider.Clear();
         }
     }
     // Méthode appelée lors du dessin de gizmos dans l'éditeur

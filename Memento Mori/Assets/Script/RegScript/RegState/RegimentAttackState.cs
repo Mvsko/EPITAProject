@@ -30,7 +30,7 @@ public class RegimentAttackState : StateMachineBehaviour
     { 
       if(animator.transform.GetComponent<RegimentMovement>().isCommandedToMove == true)
       { 
-         Debug.Log("IDLE State ");
+         //Debug.Log("IDLE State ");
          animator.SetBool("IsAttacking",false);
       }
 
@@ -65,7 +65,7 @@ public class RegimentAttackState : StateMachineBehaviour
             
          if (distanceFromTarget >= stopAttackingDistance || attackController == null  )
          {
-            Debug.Log("Follow State ");
+            //Debug.Log("Follow State ");
             animator.SetBool("IsAttacking",false);
          }
       }

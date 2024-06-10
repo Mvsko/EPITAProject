@@ -14,12 +14,12 @@ public class BattleEnd : MonoBehaviour
     {
         canvas.enabled = ! canvas.enabled;
         PlayerInventory Inventory = InventoryGameobject.GetComponent<PlayerInventory>();
-        regimentsKilledEnd = RegimentSelectionManager.Instance.regimentsKilled;
+        regimentsKilledEnd = RegimentSelectionManager.Instance.regimentsOwnedKilled;
         int indexRK = regimentsKilledEnd.Count-1;
 
 
 
-        while(regimentsKilledEnd.Count >0)
+        while(regimentsKilledEnd.Count >0 || indexRK >= 0)
         {
             bool regimentremove = false;
             int indexInventory = Inventory.RegimentsOwned.Count-1;

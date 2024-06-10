@@ -481,6 +481,7 @@ MonoBehaviour:
   healthTracker: {fileID: 341171471129870256}
   typeRegiment: Hastati
   dead: 0
+  Removecheck: 0
   blason: {fileID: 0}
   couleur: {fileID: 0}
 --- !u!114 &8791840391899545200
@@ -537,7 +538,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4999270988144675899
 GameObject:

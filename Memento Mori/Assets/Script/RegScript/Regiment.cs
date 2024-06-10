@@ -14,28 +14,34 @@ public class Regiment : MonoBehaviour
     public HealthTracker healthTracker;
 
     public string typeRegiment;
-    public List<Unit> listUnite {get;set;}      // Liste des unités composant ce régiment
+    public Unit unit {get;set;}      // Liste des unités composant ce régiment
     public bool dead = false;
     public bool Removecheck = false;
     public Material blason;                     // Matériel du blason du régiment
     public Material couleur;                     // Matériel de couleur du régiment
+
+    public bool IAEnabled = true;
     void Start()
     {
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
-        RegimentSelectionManager.Instance.allRegimentsList.Add(gameObject);
+        
+        if(gameObject.tag =="Team1")
+        {
+            IAEnabled = false;
+            RegimentSelectionManager.Instance.allRegimentsList.Add(gameObject);
+        }
+        
 
 
         //Création des unités du régiments
-        listUnite = new List<Unit>();
-        for (int i = 0; i < 10; i++)
-        {
-            listUnite.Add(new Unit(typeRegiment));
-        }
         
-        regimentMaxHealth = listUnite[0].model.vie;
-        regimentHealth = regimentMaxHealth;
+        unit = new Unit(typeRegiment);
+        
+        
+        
         // Création des stats du régiments
-        //regimentHealth = regimentMaxHealth;
+        regimentMaxHealth = unit.model.vie;
+        regimentHealth = regimentMaxHealth;
         
         // Met à jour l'interface utilisateur
         UpdateHealthUI() ;
@@ -49,16 +55,19 @@ public class Regiment : MonoBehaviour
         {
             couleur = Resources.Load("Materials/Rouge", typeof(Material)) as Material;
             gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = couleur;
+            gameObject.transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = couleur;
         }
         if(tag == "Team2")
         {
             couleur = Resources.Load("Materials/Bleu", typeof(Material)) as Material;
             gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = couleur;
+            gameObject.transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = couleur;
         }
         if(tag == "Team3")
         {
             couleur = Resources.Load("Materials/Marron", typeof(Material)) as Material;
             gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = couleur;
+            gameObject.transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material = couleur;
         }
         
         
@@ -72,8 +81,6 @@ public class Regiment : MonoBehaviour
         // Si le régiment est mort, efface la liste des unités
         if(dead )
         {
-           
-            
             OnDestroy();
         }
        

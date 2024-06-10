@@ -47,9 +47,9 @@ public class Unit
         {
           model = new Bretteur();  
         }
-        if(type == "ChasseurNu")
+        if(type == "Chasseur")
         {
-          model = new ChasseurNu();  
+          model = new Chasseur();  
         }
         if(type == "GuerrierNu")
         {
@@ -86,18 +86,5 @@ public class Unit
     void Update()
     {
         
-    }
-/// <summary>
-/// Fonction qui fait subir des dégats au régiment
-/// </summary>
-/// <param name="dommage">le montant des dégats</param>
-/// <param name="type">par le type d'arme</param>
-    public void defendre(int dommage, string typeWeapon)
-    {
-    }
-
-    public void attack()
-    {
-
     }
 }

@@ -13,7 +13,7 @@ public class RegimentSelectionManager : MonoBehaviour
     public List<GameObject> allRegimentsList = new List<GameObject>();
     public List<GameObject> regimentsSelected = new List<GameObject>();
 
-    public List<string> regimentsKilled = new List<string>();
+    public List<string> regimentsOwnedKilled = new List<string>();
     
     public LayerMask clickable;
     public LayerMask ground;
@@ -104,9 +104,9 @@ public class RegimentSelectionManager : MonoBehaviour
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-           if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable))
+           if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable)&& hit.collider.gameObject.CompareTag("Team1"))
            {
-                if(Input.GetKey(KeyCode.LeftShift))
+                if(Input.GetKey(KeyCode.LeftShift) )
                 {
                     MultiSelect(hit.collider.gameObject);
                 }
@@ -131,7 +131,7 @@ public class RegimentSelectionManager : MonoBehaviour
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-           if(Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
+           if(Physics.Raycast(ray, out hit, Mathf.Infinity, ground) && hit.collider.gameObject.CompareTag("Team1"))
            {
                 groundMarker.transform.position = hit.point;
                 groundMarker.SetActive(false);
@@ -148,8 +148,6 @@ public class RegimentSelectionManager : MonoBehaviour
             
            if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable) && hit.collider.CompareTag(regimentsSelected[0].tag)!= true)
            {
-                Debug.Log(regimentsSelected[0].tag);
-                Debug.Log(hit.collider.gameObject.tag);
                 
                 Debug.Log("Enemy hovered with mouse");
 
@@ -272,13 +270,13 @@ public class RegimentSelectionManager : MonoBehaviour
     }
 
     public void killedRegiment (GameObject regiment)
-    {
-        
-        regimentsSelected.Remove(regiment);
-        allRegimentsList.Remove(regiment);
-    
-        regimentsKilled.Add(regiment.GetComponent<Regiment>().typeRegiment);
-        
+    {   
+        if(regiment.tag == "Team1")
+        {
+            regimentsOwnedKilled.Add(regiment.GetComponent<Regiment>().typeRegiment);
+            regimentsSelected.Remove(regiment);
+            allRegimentsList.Remove(regiment);
+        }
         Destroy(regiment);
     }
 

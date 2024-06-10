@@ -22,6 +22,9 @@ public class SpawnRegiment : MonoBehaviour
         EspacementVerticale = new Vector3(0,0,3);
         NbRegimentCreate = 0;
         Colonne = 0;
+
+        
+
     }
     void Update()
     {

@@ -15,11 +15,6 @@ public interface IUnitType
 
 
 
-    //Interaction
-    public void defendre(int dommage, string typeWeapon);
-    public void attack();
-
-
     //Information UI
 
     public string description {get;set;}
