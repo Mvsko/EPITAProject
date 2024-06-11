@@ -9,26 +9,13 @@ public class Chasseur :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;set;}
-    public string description{get;set;}
-
     public Chasseur()
     {
-            vie = 60;
+            vie = 120;
             moral = 40;
-            armure = 40;
-            degat = 40;
-            vitesse = 20;
-            arme = "glaive";
-            description = "Ils étaient courants dans les armées antiques. Leurs projectiles pouvaient atteindre des distances de 400 mètres. Ils pouvaient facilement casser un os ou enfoncer des armure à courte portée.";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
-
-    }
-
-    public void attack()
-    {
+            armure = 10;
+            degat = 25;
+            vitesse = 2;
 
     }
 

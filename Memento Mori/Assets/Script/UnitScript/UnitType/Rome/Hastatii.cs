@@ -9,28 +9,16 @@ public class Hastati :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;}
 
-    public string description{get;set;}
 
     public Hastati ()
     {
-            vie = 150;
-            moral = 30;
-            armure = 30;
-            degat = 30;
-            vitesse = 25;
-            arme = "glaive";
-            description = "Ce sont les soldats lourdement équipés des Romains. Ces régiments étaient composés de vétérans, ils forment une force aguerri et impressionnante.";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
-
-    }
-
-    public void attack()
-    {
-
+            vie = 160;
+            moral = 40;
+            armure = 60;
+            degat = 28;
+            vitesse = 2;
+            
     }
 
 }

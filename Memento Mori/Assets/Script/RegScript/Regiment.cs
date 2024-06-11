@@ -10,6 +10,8 @@ public class Regiment : MonoBehaviour
     public float regimentHealth;            // Points de vie actuels du régiment
     public float regimentMaxHealth;         // Points de vie maximum du régiment
 
+    public int armure;
+
     // Référence au HealthTracker pour mettre à jour l'interface de la vie
     public HealthTracker healthTracker;
 
@@ -23,6 +25,9 @@ public class Regiment : MonoBehaviour
     public bool IAEnabled = true;
     void Start()
     {
+        //Création des unités du régiments
+        unit = new Unit(typeRegiment);
+        
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
         
         if(gameObject.tag =="Team1")
@@ -33,15 +38,14 @@ public class Regiment : MonoBehaviour
         
 
 
-        //Création des unités du régiments
         
-        unit = new Unit(typeRegiment);
         
         
         
         // Création des stats du régiments
-        regimentMaxHealth = unit.model.vie;
+        regimentMaxHealth = unit.vie;
         regimentHealth = regimentMaxHealth;
+        armure = unit.armure;
         
         // Met à jour l'interface utilisateur
         UpdateHealthUI() ;
@@ -89,7 +93,23 @@ public class Regiment : MonoBehaviour
     // Méthode pour infliger des dégâts au régiment
     public void TakeDamage(int damageToInflict)
     {
-        regimentHealth -= damageToInflict;
+        //Impacte de l'armure (armure)
+        /*
+        Avec une armure de 0, le regiment subirait tous les dégâts d'attaque. 
+        Avec une armure de 50, le regiment subirait 4 dixieme des dégâts. 
+        A 100 d'armure, le regiment subira deux dixième des dégâts.
+        */
+
+        //Impacte de la hauteur (y)
+        /*
+        La hauteur influe sur le tation des "damagetoInflict".
+        Plus le régiment est en hauteur, moins il prends de dégat.
+        La hauteur et l'armure sont indépendant.
+        */
+        regimentHealth = regimentHealth - damageToInflict * 100/(5 * armure + 50*transform.position.y);
+
+
+
         UpdateHealthUI();
     }
 

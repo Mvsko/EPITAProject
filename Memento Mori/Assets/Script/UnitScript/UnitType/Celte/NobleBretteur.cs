@@ -9,27 +9,15 @@ public class NobleBretteur : IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;set;}
 
-    public string description{get;set;}
     public NobleBretteur ()
     {
-            vie = 350;
-            moral = 40;
-            armure = 40;
-            degat = 40;
-            vitesse = 20;
-            arme = "glaive";
-            description = "";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
-
-    }
-
-    public void attack()
-    {
-
-    }
+            vie = 160;
+            moral = 70;
+            armure = 75;
+            degat = 34;
+            vitesse = 2;
+ }
+ 
 
 }

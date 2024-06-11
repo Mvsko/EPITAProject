@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Unit 
+public class Unit : IUnitType
 {
     public IUnitType model{get;set;}
     public int vie{get;set;} 
@@ -12,8 +12,6 @@ public class Unit
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-
-    public string arme{get;set;}
 
     public Unit (string type)
     {
@@ -71,20 +69,9 @@ public class Unit
 
 
         vie = model.vie;
-       
         armure = model.armure;
         degat = model.degat;
         vitesse = model.vitesse;
-        arme = model.arme;
 
-    }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 }

@@ -484,6 +484,7 @@ MonoBehaviour:
   Removecheck: 0
   blason: {fileID: 0}
   couleur: {fileID: 0}
+  IAEnabled: 1
 --- !u!114 &8791840391899545200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetToAttack: {fileID: 0}
   unitDamage: 10
+  targetsCollider: []
+  regiment: {fileID: 4333375618045638788}
 --- !u!95 &2036463136459744151
 Animator:
   serializedVersion: 5

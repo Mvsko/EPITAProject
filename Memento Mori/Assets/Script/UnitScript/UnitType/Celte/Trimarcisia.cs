@@ -9,27 +9,14 @@ public class Trimarcisia :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;set;}
-    public string description{get;set;}
-
     public Trimarcisia ()
     {
-            vie = 200;
-            moral = 40;
-            armure = 40;
-            degat = 40;
-            vitesse = 20;
-            arme = "glaive";
-            description = "";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
+            vie = 80;
+            moral = 55;
+            armure = 60;
+            degat = 42;
+            vitesse = 2;
+}
 
-    }
-
-    public void attack()
-    {
-
-    }
 
 }

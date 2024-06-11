@@ -9,28 +9,14 @@ public class GuerrierNu :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;}
-
-    public string description{get;set;}
-
     public GuerrierNu ()
     {
-            vie = 110;
-            moral = 30;
-            armure = 30;
-            degat = 30;
-            vitesse = 25;
-            arme = "glaive";
-            description = "Ce sont les soldats lourdement équipés des Romains. Ces régiments étaient composés de vétérans, ils forment une force aguerri et impressionnante.";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
+            vie = 160;
+            moral = 40;
+            armure = 10;
+            degat = 34;
+            vitesse = 2;
+}
 
-    }
-
-    public void attack()
-    {
-
-    }
 
 }

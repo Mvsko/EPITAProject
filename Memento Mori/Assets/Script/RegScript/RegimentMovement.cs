@@ -36,7 +36,10 @@ public class RegimentMovement : MonoBehaviour
         // initialisation de l'ia pour le pathfinding
         agent = GetComponent<NavMeshAgent>(); 
     }
-
+    public void AIMovement(UnityEngine.Vector3 vector)
+    {
+        agent.SetDestination(vector);
+    }
     private void Update()
     {
         // Si le joueur clique avec le bouton droit de la souris

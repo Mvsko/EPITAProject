@@ -9,26 +9,14 @@ public class Bretteur : IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;set;}
-    public string description{get;set;}
 
     public Bretteur ()
     {
-            vie = 150;
-            moral = 40;
-            armure = 40;
-            degat = 40;
-            vitesse = 20;
-            arme = "glaive";
-            description = "Ce sont les soldats lourdement équipés des Romains. Ces régiments étaient composés de vétérans, ils forment une force aguerri et impressionnante.";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
-
-    }
-
-    public void attack()
-    {
+            vie = 160;
+            moral = 45;
+            armure = 45;
+            degat = 27;
+            vitesse = 2;
 
     }
 

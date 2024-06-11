@@ -9,26 +9,14 @@ public class Equites :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;set;}
-    public string description{get;set;}
 
     public Equites ()
     {
-            vie = 200;
-            moral = 40;
-            armure = 40;
+            vie = 80;
+            moral = 55;
+            armure = 70;
             degat = 40;
-            vitesse = 20;
-            arme = "glaive";
-            description = "";
-    }
-    public void defendre(int dommage, string typeWeapon)
-    {
-
-    }
-
-    public void attack()
-    {
+            vitesse = 2;
 
     }
 

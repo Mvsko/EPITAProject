@@ -11,11 +11,5 @@ public interface IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public int vitesse{get;set;}
-    public string arme{get;}
 
-
-
-    //Information UI
-
-    public string description {get;set;}
 }

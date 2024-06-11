@@ -14,6 +14,8 @@ public class EventsManagerCampaign : MonoBehaviour
     private int TimeSaisonId;
     public PlayerInventory Inventory;
 
+    public OpinionManager opinionManager;
+
     // Liste des événements de campagne
     
     private int NbEvent;
@@ -72,5 +74,134 @@ public class EventsManagerCampaign : MonoBehaviour
         }
         
     }
+
+    public void Event0(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.MilitaryOpinion +=15;
+            opinionManager.RegionOpinion -=10;
+            Inventory.money += Random.Range(1,20);
+        }
+        else
+        {
+            opinionManager.MilitaryOpinion -=10;
+            opinionManager.RegionOpinion +=10;
+            opinionManager.SenatOpinion +=5;
+
+        }
+    }
+    public void Event1(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.MilitaryOpinion +=5;
+            
+        }
+        else
+        {
+            Inventory.money += Random.Range(1,10);
+
+        }
+    }
+    public void Event2(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.RegionOpinion +=5;
+            Inventory.money -= Random.Range(2,5);
+        }
+    }
+
+    public void Event3(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.RegionOpinion += 5;
+            Inventory.money -= Random.Range(2,10);
+            
+        }
+        else
+        {
+            opinionManager.RegionOpinion -=10;
+            opinionManager.MilitaryOpinion -=15;
+        }
+    }
+    public void Event4(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.RegionOpinion += 5;
+            opinionManager.MilitaryOpinion += 1;
+            
+        }
+        else
+        {
+            opinionManager.RegionOpinion -=20;
+            opinionManager.SenatOpinion +=10;
+            Inventory.money += Random.Range(1,10);
+        }
+    }
+
+    public void Event5(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.MilitaryOpinion -= 15;
+            opinionManager.SenatOpinion -=10;
+            
+        }
+        else
+        {
+            opinionManager.MilitaryOpinion +=5;
+            opinionManager.SenatOpinion -=5;
+            Inventory.money -= Random.Range(1,5);
+        }
+    }
+
+    public void Event6(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.SenatOpinion +=Random.Range(1,10);;
+            Inventory.money -= Random.Range(1,5);
+            
+        }
+        else
+        {
+            opinionManager.SenatOpinion -=10;
+            opinionManager.MilitaryOpinion +=5;
+        }
+    }
+
+    public void Event7(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.SenatOpinion +=Random.Range(1,10);;
+            Inventory.money -= Random.Range(1,5);
+            
+        }
+        else
+        {
+            opinionManager.SenatOpinion -=10;
+        }
+    }
+
+    public void Event8(bool IsRep1)
+    {
+        if(IsRep1)
+        {
+            opinionManager.MilitaryOpinion +=10;
+            opinionManager.RegionOpinion +=5;
+            
+            
+        }
+        else
+        {
+            opinionManager.SenatOpinion +=8;
+        }
+    }
+
 
 }
