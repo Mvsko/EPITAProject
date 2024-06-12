@@ -8,7 +8,7 @@ public class Equites :  IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
     public Equites ()
     {
@@ -16,7 +16,7 @@ public class Equites :  IUnitType
             moral = 55;
             armure = 70;
             degat = 40;
-            vitesse = 2;
+            vitesse = 3.5f;
 
     }
 

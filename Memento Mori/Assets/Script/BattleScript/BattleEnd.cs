@@ -10,8 +10,11 @@ public class BattleEnd : MonoBehaviour
 
     public Behaviour canvas;
 
+    
+
     public void BattleProvinceEnd()
     {
+        
         canvas.enabled = ! canvas.enabled;
         PlayerInventory Inventory = InventoryGameobject.GetComponent<PlayerInventory>();
         regimentsKilledEnd = RegimentSelectionManager.Instance.regimentsOwnedKilled;
@@ -45,13 +48,6 @@ public class BattleEnd : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            //disables/enables the canvas
-            BattleProvinceEnd();
-        }
-    }
+    
 }
 

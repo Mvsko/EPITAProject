@@ -11,7 +11,7 @@ public class Unit : IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
     public Unit (string type)
     {
@@ -72,6 +72,7 @@ public class Unit : IUnitType
         armure = model.armure;
         degat = model.degat;
         vitesse = model.vitesse;
+        moral = model.moral;
 
     }
 }

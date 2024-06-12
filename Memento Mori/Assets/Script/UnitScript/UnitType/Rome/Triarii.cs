@@ -8,7 +8,7 @@ public class Triarii : IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
     public Triarii ()
     {
@@ -16,7 +16,7 @@ public class Triarii : IUnitType
             moral = 65;
             armure = 95;
             degat = 31;
-            vitesse = 2;
+            vitesse = 1.8f;
 
     }
 

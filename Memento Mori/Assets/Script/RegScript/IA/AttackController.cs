@@ -81,7 +81,7 @@ public class AttackController : MonoBehaviour
                         { 
                             
                             //Attaque en cas de majorité à proximité
-                            if(EnemyCollider.Count < AllyCollider.Count)
+                            if(EnemyCollider.Count < AllyCollider.Count+1)
                             {
                                 Debug.Log("Attaquer");
                                 targetToAttack = other.transform;
@@ -136,7 +136,7 @@ public class AttackController : MonoBehaviour
                 if(AllyCollider.Count > EnemyCollider.Count &&  other.gameObject.transform.GetComponent<Regiment>().regimentHealth > regiment.regimentHealth )
                 {
                     Debug.Log("Tente de ratraper le regiment");
-                    agent.SetDestination(other.transform.position +  (other.transform.position-transform.position));
+                    agent.SetDestination(other.transform.position +  (transform.position-other.transform.position));
                 }
                     
             }
@@ -144,10 +144,10 @@ public class AttackController : MonoBehaviour
             {
                 AllyCollider.Remove(other);
                 //Tente de rallier les autres regimetns
-                if(AllyCollider.Count == 0 && CavRegimentType.Contains(regiment.typeRegiment) == false)
+                if(AllyCollider.Count == 0 && (CavRegimentType.Contains(regiment.typeRegiment) == false || CavRegimentType.Contains(other.gameObject.transform.GetComponent<Regiment>().typeRegiment)))
                 {
                     Debug.Log("Tente de rallier un ami");
-                    agent.SetDestination(other.transform.position + (other.transform.position-transform.position));
+                    agent.SetDestination(other.transform.position);
                 }
             }
             

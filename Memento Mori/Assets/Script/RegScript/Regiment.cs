@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Regiment : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Regiment : MonoBehaviour
     public float regimentHealth;            // Points de vie actuels du régiment
     public float regimentMaxHealth;         // Points de vie maximum du régiment
 
-    public int armure;
+    public float armure;
+    public float moral;
 
     // Référence au HealthTracker pour mettre à jour l'interface de la vie
     public HealthTracker healthTracker;
@@ -22,11 +24,14 @@ public class Regiment : MonoBehaviour
     public Material blason;                     // Matériel du blason du régiment
     public Material couleur;                     // Matériel de couleur du régiment
 
+    NavMeshAgent agent;
     public bool IAEnabled = true;
     void Start()
     {
+        
         //Création des unités du régiments
         unit = new Unit(typeRegiment);
+        agent = GetComponent<NavMeshAgent>();
         
         // Ajoute le régiment dans la liste pour pouvoir etre utilisé
         
@@ -46,6 +51,8 @@ public class Regiment : MonoBehaviour
         regimentMaxHealth = unit.vie;
         regimentHealth = regimentMaxHealth;
         armure = unit.armure;
+        agent.speed = unit.vitesse;
+        moral = unit.moral;
         
         // Met à jour l'interface utilisateur
         UpdateHealthUI() ;
@@ -106,7 +113,31 @@ public class Regiment : MonoBehaviour
         Plus le régiment est en hauteur, moins il prends de dégat.
         La hauteur et l'armure sont indépendant.
         */
-        regimentHealth = regimentHealth - damageToInflict * 100/(5 * armure + 50*transform.position.y);
+
+        float damage = damageToInflict * 100/(5 * armure + 50*transform.position.y);
+        regimentHealth = regimentHealth - damage* unit.moral/moral;
+
+        
+        
+        if(moral>1)
+        {
+            moral -=1f;
+        }
+        else
+        {
+            moral = 1;
+        }
+        
+        if(armure>0)
+        {
+            //armure = armure - (damageToInflict/((int)damage)+damageToInflict/2);
+            armure -= 1f;
+        }
+        else
+        {
+            armure = 0;
+        }
+        
 
 
 

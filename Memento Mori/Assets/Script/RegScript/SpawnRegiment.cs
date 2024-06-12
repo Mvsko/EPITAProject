@@ -28,14 +28,7 @@ public class SpawnRegiment : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnRegimentMethod("Legat");
-        }
-        
-        dragRegimentSpawn();
-
-    
+        //dragRegimentSpawn();
     }
     public void dragRegimentSpawn()
     {
@@ -49,6 +42,14 @@ public class SpawnRegiment : MonoBehaviour
             }
             
         }
+    }
+
+    public void ResetSpawnRegimentPlacement()
+    {
+        EspacementHorizontale = new Vector3(3,0,0);
+        EspacementVerticale = new Vector3(0,0,3);
+        NbRegimentCreate = 0;
+        Colonne = 0;
     }
     public void SpawnRegimentMethod(string type)
     {

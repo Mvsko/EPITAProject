@@ -8,7 +8,7 @@ public class Frondeur :  IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
     public Frondeur ()
     {
@@ -16,7 +16,7 @@ public class Frondeur :  IUnitType
             moral = 25;
             armure = 25;
             degat = 23;
-            vitesse = 20;
+            vitesse = 2.5f;
 
     }
 }

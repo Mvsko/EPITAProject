@@ -8,7 +8,7 @@ public class Bretteur : IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
     public Bretteur ()
     {
@@ -16,7 +16,7 @@ public class Bretteur : IUnitType
             moral = 45;
             armure = 45;
             degat = 27;
-            vitesse = 2;
+            vitesse = 1.5f;
 
     }
 

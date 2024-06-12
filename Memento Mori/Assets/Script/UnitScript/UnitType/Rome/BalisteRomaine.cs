@@ -8,7 +8,7 @@ public class BalisteRomaine :  IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
     public BalisteRomaine ()
     {
@@ -16,6 +16,6 @@ public class BalisteRomaine :  IUnitType
             moral = 40;
             armure = 40;
             degat = 35;
-            vitesse = 2;
+            vitesse = 1;
     }
 }

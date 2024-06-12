@@ -21,6 +21,8 @@ public class RegimentSelectionManager : MonoBehaviour
     private Camera cam;
     public mouvementTypeList mouvementType;
 
+    public UIRegimentInformation RegimentInformation;
+
     public bool attackCursorVisible;
     public enum mouvementTypeList
     {
@@ -60,6 +62,8 @@ public class RegimentSelectionManager : MonoBehaviour
 
     private void Update()
     {   
+        RegimentInformation.RegimentInfoActivate(regimentsSelected);
+        
         if(regimentsSelected.Count > 1)     // Formations Complexes
         {
             if(Input.GetKey(KeyCode.Alpha1))

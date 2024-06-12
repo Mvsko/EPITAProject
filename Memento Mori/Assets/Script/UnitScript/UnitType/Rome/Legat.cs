@@ -8,14 +8,14 @@ public class Legat : IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
     public Legat ()
     {
             vie = 60;
             moral = 55;
             armure = 70;
             degat = 25;
-            vitesse = 2;
+            vitesse = 3;
 
     }
 

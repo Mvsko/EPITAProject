@@ -27,6 +27,7 @@ public class BattleStart : MonoBehaviour
             spawnRegiment.SpawnRegimentMethod(regiment);
         }
        }
+       spawnRegiment.ResetSpawnRegimentPlacement();
        
         
     }

@@ -51,7 +51,7 @@ public class RegimentAttackState : StateMachineBehaviour
          if (attackTimer <= 0)
          {
             Attack();
-            attackTimer = 1f/attackRate;
+            attackTimer = 10f/attackRate;
          }
          else
          {

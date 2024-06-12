@@ -8,7 +8,7 @@ public class Hastati :  IUnitType
     public int moral{get;set;}
     public int armure{get;set;}
     public int degat{get;set;}
-    public int vitesse{get;set;}
+    public float vitesse{get;set;}
 
 
     public Hastati ()
@@ -17,7 +17,7 @@ public class Hastati :  IUnitType
             moral = 40;
             armure = 60;
             degat = 28;
-            vitesse = 2;
+            vitesse = 2.2f;
             
     }
 
