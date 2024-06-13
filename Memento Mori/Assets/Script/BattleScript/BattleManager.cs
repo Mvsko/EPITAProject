@@ -31,6 +31,7 @@ public class BattleManager : MonoBehaviour
 
     public ProvinceBattle Current;
     public RecapitulatifScript recap;
+    public GameObject UnitSelectionBox;
 
     private List<ProvinceBattle> ListProv;
     List<Button> ListButton;
@@ -63,6 +64,7 @@ public class BattleManager : MonoBehaviour
 
     public void BattleButtonStart(int ID)
     {
+        UnitSelectionBox.SetActive(true);
         MusicManager.GetComponent<MusicScriptManager>().RightToPlay = false;
        
         battleStart.BattleProvinceStart(ID);
@@ -84,6 +86,7 @@ public class BattleManager : MonoBehaviour
             recap.Defeat +=1;
             opinionManager.SenatOpinion -=25;
         }
+        UnitSelectionBox.SetActive(false);
         battleEnd.BattleProvinceEnd();
         Current = null;
         EscapeMenu.SetActive(false);
