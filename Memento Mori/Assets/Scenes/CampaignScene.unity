@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &7656748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19774,8 +19774,8 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: f89dc64f55b16d949bf7f8c7163be159, type: 3}
   - {fileID: 8300000, guid: 3ee2363a7bdd969478c79f8a01c60800, type: 3}
-  randomPlay: 1
-  RightToPlay: 1
+  randomPlay: 0
+  RightToPlay: 0
 --- !u!82 &1874184263
 AudioSource:
   m_ObjectHideFlags: 0

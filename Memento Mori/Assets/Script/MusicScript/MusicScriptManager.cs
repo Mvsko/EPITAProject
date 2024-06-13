@@ -20,7 +20,7 @@ public class MusicScriptManager : MonoBehaviour
 
     void Update () {
         
-        if(randomPlay)
+        if(RightToPlay)
         {
             if ( !audioSource.isPlaying) 
             {
