@@ -21,6 +21,8 @@ Pour que personne ne se batte que tout fonctionne bien, on va suivre quelques pe
     ![Utilisation de la pull request](screen/pull_request.png)
     * Une fois que la pull request est crée, on annonce à chacun de se mettre à jour, soit avec le fichier `scripts/pull.sh`, soit avec `git checkout main && git pull origin main` mais en ayant pensé à commit avand sur sa propre branche. Il faut bien penser à se mettre sur la branche main avec le pull !!
     ![git pull main](screen/pull_sh.png)
+4. Une fois que le code est pull sur la branche main, il faudra aussi la mettre sur votre propre branch et c'est là qu'intervient le script `scripts_git/merge.sh`. Il sauvegarde votre progression sur votre branche, puis fusionne la branche main dessus. **Attention !** Il peut y avoir des confits. Ceci peuvent être rêglés sur la cli ([tuto](https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line)) ou sur vscode directement ([tuto](https://code.visualstudio.com/docs/sourcecontrol/overview)).
+5. La zone de danger c'est `scripts_git/reset.sh` qui recupère tout le code de la branche main sur github et écrase le contenu actuel.
 
 ## Utilisation des scripts
 
@@ -66,3 +68,5 @@ $ ./scripts_git/push.sh
 fatal: a branch named 'Martin-branch' already exists
 ```
 **C'est pas grâce, ça change rien.** Le script essaye de créer une branche qui existe déjà, mais c'est pas grâve vuq eu le but c'est de switch desssus.
+
+https://www.youtube.com/watch?v=ygqx50-JHEE
