@@ -19,7 +19,7 @@ Pour que personne ne se batte que tout fonctionne bien, on va suivre quelques pe
 3. La mise sur le main, sur github.
     * Quand on a push sur notre branche, ça s'affiche sur github uniquement dans la branche qu'on a créé. Pour mettre tout ça sur le main, il faut créer des pull request. Il faut les vérifier, s'assurer que ça rentre pas conflit avec des truc importants.
     ![Utilisation de la pull request](screen/pull_request.png)
-    * Une fois que la pull request est crée, on annonce à chacun de se mettre à jour, soit avec le fichier `scripts/pull.sh`, soit avec `git checkout main && git pull origin main`. Il faut bien penser à se mettre sur la branche main avec le pull !!
+    * Une fois que la pull request est crée, on annonce à chacun de se mettre à jour, soit avec le fichier `scripts/pull.sh`, soit avec `git checkout main && git pull origin main` mais en ayant pensé à commit avand sur sa propre branche. Il faut bien penser à se mettre sur la branche main avec le pull !!
     ![git pull main](screen/pull_cli.png)
 
 ## Utilisation des scripts
