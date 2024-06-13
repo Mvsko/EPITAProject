@@ -12,6 +12,8 @@ public class BattleStart : MonoBehaviour
 
     public GameObject Maps;
 
+    
+
     public void BattleProvinceStart(int mapID)
     {
        for (int i = 0; i <  Maps.transform.childCount; i++)
@@ -28,6 +30,8 @@ public class BattleStart : MonoBehaviour
         }
        }
        spawnRegiment.ResetSpawnRegimentPlacement();
+
+       
        
         
     }

@@ -8,7 +8,7 @@ public class AttackController : MonoBehaviour
 {
     public Transform targetToAttack;    // Transform de la cible à attaquer
     public Regiment regiment;
-    public int unitDamage;               // Dégâts infligés par cette unité
+    public int DamageMelee;               // Dégâts infligés par cette unité
 
     public List<Collider> EnemyCollider = new List<Collider>();
     public List<Collider> AllyCollider = new List<Collider>();
@@ -26,7 +26,7 @@ public class AttackController : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        unitDamage  =  regiment.unit.degat; 
+        DamageMelee  =  regiment.unit.degatMelee; 
 
         if(other.gameObject.layer == LayerMask.NameToLayer("Clickable"))
         {
@@ -55,7 +55,7 @@ public class AttackController : MonoBehaviour
                             }
                             */
                             //Contre Attaque
-                            if((EnemyCollider.Count < AllyCollider.Count||other.gameObject.transform.GetComponent<Regiment>().unit.degat < regiment.unit.degat)
+                            if((EnemyCollider.Count < AllyCollider.Count||other.gameObject.transform.GetComponent<Regiment>().unit.degatMelee < regiment.unit.degatMelee)
                              && WeakRegimentType.Contains(regiment.typeRegiment)==false)
                             {
                                 Debug.Log("Contre Attack");

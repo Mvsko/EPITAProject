@@ -40,7 +40,7 @@ void Update()
             healthBarImage.fillAmount = regiment.regimentHealth/regiment.regimentMaxHealth;
             ArmorBarImage.fillAmount = regiment.armure/regiment.unit.armure;
             MoralBarImage.fillAmount = regiment.moral/regiment.unit.moral;
-            Damage.text = $"Degat: {regiment.unit.degat}";
+            Damage.text = $"Degat: {regiment.unit.degatMelee}";
             Speed.text = $"Vitesse: {regiment.unit.vitesse}";
             Health.text = $"Santé: {(int)regiment.regimentHealth}";
             Armor.text = $"Armure: {(int)regiment.armure}";

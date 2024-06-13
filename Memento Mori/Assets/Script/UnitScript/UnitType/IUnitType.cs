@@ -9,7 +9,8 @@ public interface IUnitType
     public int vie{get;set;} 
     public int moral{get;set;}
     public int armure{get;set;}
-    public int degat{get;set;}
+    public int degatMelee{get;set;}
+    public int degatDistance{get;set;}
     public float vitesse{get;set;}
 
 }

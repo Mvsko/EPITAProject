@@ -73,7 +73,7 @@ public class RegimentAttackState : StateMachineBehaviour
 
    private void Attack()
    {
-      var damageToInflict = attackController.unitDamage;
+      var damageToInflict = attackController.DamageMelee;
       // Actually Attack Unit
       attackController.targetToAttack.GetComponent<Regiment>().TakeDamage(damageToInflict);
    }

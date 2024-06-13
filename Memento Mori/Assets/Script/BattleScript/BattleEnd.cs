@@ -9,9 +9,9 @@ public class BattleEnd : MonoBehaviour
     private List<string> regimentsKilledEnd; 
 
     public Behaviour canvas;
-
+    public OpinionManager opinionManager;
     
-
+    public RecapitulatifScript recap;
     public void BattleProvinceEnd()
     {
         
@@ -19,7 +19,8 @@ public class BattleEnd : MonoBehaviour
         PlayerInventory Inventory = InventoryGameobject.GetComponent<PlayerInventory>();
         regimentsKilledEnd = RegimentSelectionManager.Instance.regimentsOwnedKilled;
         int indexRK = regimentsKilledEnd.Count-1;
-
+        opinionManager.MilitaryOpinion -= regimentsKilledEnd.Count*5;
+        recap.DeadRegimentOwner += regimentsKilledEnd.Count;
 
 
         while(regimentsKilledEnd.Count >0 || indexRK >= 0)
