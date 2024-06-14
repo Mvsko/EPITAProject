@@ -10,15 +10,17 @@ public class Chasseur :  IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
+
+    public float attackingRangeDistance {get; set; }
     public Chasseur()
     {
             vie = 120;
             moral = 40;
             armure = 10;
-            degatMelee = 25;
-            degatDistance = 0;
+            degatMelee = 15;
+            degatDistance = 25;
             vitesse = 2.5f;
-
+            attackingRangeDistance = 20f;
     }
 
 }

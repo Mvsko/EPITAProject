@@ -13,4 +13,6 @@ public interface IUnitType
     public int degatDistance{get;set;}
     public float vitesse{get;set;}
 
+    public float attackingRangeDistance{get;set;}
+
 }

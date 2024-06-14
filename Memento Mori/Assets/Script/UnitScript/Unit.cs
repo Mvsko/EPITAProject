@@ -13,7 +13,8 @@ public class Unit : IUnitType
     public int degatMelee{get;set;}
     public int degatDistance{get;set;}
     public float vitesse{get;set;}
-    
+    public float attackingRangeDistance { get; set; }
+
 
     public Unit (string type)
     {
@@ -76,6 +77,7 @@ public class Unit : IUnitType
         degatDistance = model.degatDistance;
         vitesse = model.vitesse;
         moral = model.moral;
+        attackingRangeDistance = model.attackingRangeDistance;
 
     }
 }

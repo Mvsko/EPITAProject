@@ -44,7 +44,8 @@ public class EventsManagerCampaign : MonoBehaviour
     {
         //Changement du temps
         TimeSaisonId +=1;
-        Inventory.money += Inventory.Income-Inventory.Sales;
+        
+        Inventory.money += Inventory.Income - Inventory.Sales*(100/((int)opinionManager.RegionOpinion+1));
         
         if (TimeSaisonId > 3)
         {

@@ -10,6 +10,7 @@ public class Bretteur : IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
+    public float attackingRangeDistance {get; set; }
 
     public Bretteur ()
     {
@@ -19,6 +20,7 @@ public class Bretteur : IUnitType
             degatMelee = 27;
             degatDistance = 0;
             vitesse = 1.5f;
+            attackingRangeDistance = 0;
 
     }
 

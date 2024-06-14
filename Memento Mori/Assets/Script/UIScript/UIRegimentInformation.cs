@@ -15,7 +15,7 @@ public class UIRegimentInformation : MonoBehaviour
     public TextMeshProUGUI Moral;
 
     public TextMeshProUGUI AIActivateButton;
-    private string Icon = "☐";
+    private string BoolAI="Non";
 
     public Image healthBarImage;
     public Image ArmorBarImage;
@@ -36,9 +36,14 @@ public void RegimentInfoActivate(List<GameObject> regs)
     
     }
 void Update()
-    {
+    {   
+        
         if(regiment != null)
-        {
+        {   
+            if(Input.GetKeyUp(KeyCode.Space))
+            {   
+                ActiveAi();
+            }
             
             healthBarImage.fillAmount = regiment.regimentHealth/regiment.regimentMaxHealth;
             ArmorBarImage.fillAmount = regiment.armure/regiment.unit.armure;
@@ -48,8 +53,9 @@ void Update()
             Health.text = $"Santé: {(int)regiment.regimentHealth}";
             Armor.text = $"Armure: {(int)regiment.armure}";
             Moral.text =$"Moral: {(int)regiment.moral}";
-            AIActivateButton.text = Icon;
+            AIActivateButton.text = "AI Active: "+BoolAI;
         }
+
     }
 
 public void ActiveAi()
@@ -57,11 +63,11 @@ public void ActiveAi()
         regiment.IAEnabled = !regiment.IAEnabled;
         if(regiment.IAEnabled)
         {
-            Icon = "☑";
+            BoolAI="Oui";
         }
         else
         {
-            Icon = "☐";
+            BoolAI="Non";
         }
 
     }   

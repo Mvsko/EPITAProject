@@ -12,6 +12,7 @@ public class RegimentSelectionManager : MonoBehaviour
 
     public List<GameObject> allRegimentsList = new List<GameObject>();
     public List<GameObject> regimentsSelected = new List<GameObject>();
+    public List<GameObject> allEnemyRegimentsList = new List<GameObject>();
 
     public List<string> regimentsOwnedKilled = new List<string>();
     
@@ -281,6 +282,10 @@ public class RegimentSelectionManager : MonoBehaviour
             regimentsSelected.Remove(regiment);
             allRegimentsList.Remove(regiment);
         }
+        else
+        {
+            allEnemyRegimentsList.Remove(regiment);
+        }
         Destroy(regiment);
     }
 
@@ -293,8 +298,14 @@ public class RegimentSelectionManager : MonoBehaviour
             allRegimentsList[i].GetComponent<Regiment>().Removecheck = true;
             Destroy(allRegimentsList[i]);
        }
+       for(int i = 0; i < allEnemyRegimentsList.Count; i++)
+       {
+            allEnemyRegimentsList[i].GetComponent<Regiment>().Removecheck = true;
+            Destroy(allEnemyRegimentsList[i]);
+       }
        regimentsSelected.Clear();
        allRegimentsList.Clear();
+        allEnemyRegimentsList.Clear();
     }
 }
 

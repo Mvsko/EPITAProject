@@ -40,6 +40,11 @@ public class Regiment : MonoBehaviour
             IAEnabled = false;
             RegimentSelectionManager.Instance.allRegimentsList.Add(gameObject);
         }
+        if(gameObject.tag=="Team3")
+        {
+            IAEnabled = true;
+            RegimentSelectionManager.Instance.allEnemyRegimentsList.Add(gameObject);
+        }
         
 
 
@@ -115,7 +120,8 @@ public class Regiment : MonoBehaviour
         */
 
         float damage = damageToInflict * 100/(5 * armure + 50*transform.position.y);
-        regimentHealth = regimentHealth - damage* unit.moral/moral;
+        Debug.Log(damage * (unit.moral/moral));
+        regimentHealth = regimentHealth - damage * (unit.moral/moral);
 
         
         
@@ -160,12 +166,13 @@ public class Regiment : MonoBehaviour
     private void OnDestroy()
     {
         //Evite les doublons 
-        if(Removecheck == false)
+        if(Removecheck == false )
         {
             Removecheck = true;
             RegimentSelectionManager.Instance.killedRegiment(gameObject);
             gameObject.SetActive(false);    
         }
+        
         
         
     }

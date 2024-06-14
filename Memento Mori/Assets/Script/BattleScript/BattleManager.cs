@@ -43,8 +43,26 @@ public class BattleManager : MonoBehaviour
     public GameObject MusicManager;
     public OpinionManager opinionManager;
 
+    public GameObject CameraController;
+    public int CurrentID;
+
+    public GameObject inBattleScript;
+ 
+    List<Vector3> SpawnList = new List<Vector3>(){
+                                                new Vector3(337,16f,70f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f),
+                                                new Vector3(100f,16f,100f)};
+
     void Start()
     {   
+        inBattleScript.SetActive(false);
         ProvinceBattle Frisons = new ProvinceBattle(FrisonsButton,CherusqueButton);
         ProvinceBattle  Nerviens = new ProvinceBattle(NerviensButton,SequaneButton);
         ProvinceBattle Sequane = new ProvinceBattle(SequaneButton,CherusqueButton);
@@ -57,6 +75,8 @@ public class BattleManager : MonoBehaviour
         ProvinceBattle Astius = new ProvinceBattle(AstiusButton,AstiusButton);
         ListProv = new List<ProvinceBattle>(){Frisons,Nerviens,Sequane,Cherusque,Boiens,Ruges,Sueves,Gutone,Lugiens,Astius};
         Current = null;
+        
+        
 
 
         
@@ -64,20 +84,46 @@ public class BattleManager : MonoBehaviour
 
     public void BattleButtonStart(int ID)
     {
+        
+        
+        CameraController.GetComponent<RTSCameraController>().Teleport(SpawnList[ID]);
+
         UnitSelectionBox.SetActive(true);
         MusicManager.GetComponent<MusicScriptManager>().RightToPlay = false;
        
         battleStart.BattleProvinceStart(ID);
+        
+        CameraController.GetComponent<RTSCameraController>().moveWithMouseDrag = true;
+        CameraController.GetComponent<RTSCameraController>().moveWithKeyboad = true;
         Current = ListProv[ID];
+        CurrentID = ID;
+        inBattleScript.SetActive(true);
+        
+
+
+    }
+
+    public void ReSpawn()
+    {
+        CameraController.GetComponent<RTSCameraController>().moveWithMouseDrag = false;
+        CameraController.GetComponent<RTSCameraController>().moveWithKeyboad = false;
+         CameraController.GetComponent<RTSCameraController>().Teleport(SpawnList[CurrentID]);
+         CameraController.GetComponent<RTSCameraController>().moveWithMouseDrag = true;
+        CameraController.GetComponent<RTSCameraController>().moveWithKeyboad = true;
+
     }
 
     public void AfterMatch(bool win)
     {
+        inBattleScript.SetActive(false);
+        CameraController.GetComponent<RTSCameraController>().moveWithMouseDrag = false;
+        CameraController.GetComponent<RTSCameraController>().moveWithKeyboad = false;
         if(win && Current!=null)
         {
             Current.Next.SetActive(true);
             Current.ButtonName.SetActive(false);
             opinionManager.SenatOpinion +=10;
+            opinionManager.RegionOpinion -=15;
             recap.Victory +=1;
         
         }
@@ -86,6 +132,7 @@ public class BattleManager : MonoBehaviour
             recap.Defeat +=1;
             opinionManager.SenatOpinion -=25;
         }
+        
         UnitSelectionBox.SetActive(false);
         battleEnd.BattleProvinceEnd();
         Current = null;
@@ -98,8 +145,11 @@ public class BattleManager : MonoBehaviour
     {
         if (Current!= null && Input.GetKeyDown(KeyCode.Escape))
         {
+            
             EscapeMenu.SetActive(true);
+            
         }
+
     }
 
 

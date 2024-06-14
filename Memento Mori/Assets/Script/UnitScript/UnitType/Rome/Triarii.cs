@@ -10,6 +10,7 @@ public class Triarii : IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
+    public float attackingRangeDistance {get; set; }
 
     public Triarii ()
     {
@@ -19,6 +20,7 @@ public class Triarii : IUnitType
             degatMelee = 31;
             degatDistance = 0;
             vitesse = 1.8f;
+            attackingRangeDistance = 0;
 
     }
 

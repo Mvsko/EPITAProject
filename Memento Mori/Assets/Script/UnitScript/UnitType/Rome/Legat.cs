@@ -10,6 +10,7 @@ public class Legat : IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
+    public float attackingRangeDistance {get; set; }
     public Legat ()
     {
             vie = 60;
@@ -18,7 +19,7 @@ public class Legat : IUnitType
             degatMelee = 25;
             degatDistance = 0;
             vitesse = 3;
-
+            attackingRangeDistance = 0;
     }
 
 }

@@ -10,15 +10,17 @@ public class Onagre :  IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
-
+    public float attackingRangeDistance {get;set;}
     public Onagre ()
     {
             vie = 40;
             moral = 40;
             armure = 10;
-            degatMelee = 35;
-            degatDistance = 0;
+            degatMelee = 10;
+            degatDistance = 35;
             vitesse = 1;
+            attackingRangeDistance = 25f;
+            
 }
 
 }
