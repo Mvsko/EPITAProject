@@ -11,7 +11,7 @@ public class Hastati :  IUnitType
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
 
-
+public float attackingRangeDistance {get; set; }
     public Hastati ()
     {
             vie = 160;
@@ -20,7 +20,7 @@ public class Hastati :  IUnitType
             degatMelee = 28;
             degatDistance = 0;
             vitesse = 2.2f;
-            
+            attackingRangeDistance = 0;
     }
 
 }

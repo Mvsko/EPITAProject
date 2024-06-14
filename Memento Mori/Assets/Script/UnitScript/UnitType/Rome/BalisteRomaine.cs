@@ -12,14 +12,16 @@ public class BalisteRomaine :  IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
 
+   public float attackingRangeDistance {get; set; }
 
     public BalisteRomaine ()
     {
             vie = 40;
             moral = 40;
             armure = 40;
-            degatMelee = 35;
-            degatDistance = 0;
+            degatMelee = 10;
+            degatDistance = 35;
             vitesse = 1;
+            attackingRangeDistance = 25f;
     }
 }

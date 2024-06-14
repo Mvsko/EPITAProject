@@ -9,7 +9,8 @@ public class RegimentFollowState : StateMachineBehaviour
 
     NavMeshAgent agent;
     
-    public float attackingDistance;
+    public float attackingMeleeDistance;
+    public float attackingRangeDistance;
     private float FollowTime = 2f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -17,7 +18,11 @@ public class RegimentFollowState : StateMachineBehaviour
     {
        attackController =  animator.GetComponent<AttackController>();
        agent = animator.GetComponent<NavMeshAgent>();
-       attackingDistance = 2.5f;
+       attackingMeleeDistance = 2.5f;
+
+        attackingRangeDistance = animator.gameObject.GetComponent<Regiment>().unit.model.attackingRangeDistance;
+
+       
        
     }
 
@@ -52,7 +57,7 @@ public class RegimentFollowState : StateMachineBehaviour
 
             //Should Regiment Transition to Attack State ?
             float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
-            if (distanceFromTarget <= attackingDistance)
+            if (distanceFromTarget <= attackingMeleeDistance || distanceFromTarget <= attackingRangeDistance)
             {
                 //Debug.Log("ATTACK State ");
                 agent.SetDestination(animator.transform.position);

@@ -11,14 +11,17 @@ public class Frondeur :  IUnitType
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
 
+    public float attackingRangeDistance {get; set; }
+
     public Frondeur ()
     {
             vie = 120;
             moral = 25;
             armure = 25;
-            degatMelee = 23;
-            degatDistance = 0;
+            degatMelee = 10;
+            degatDistance = 23;
             vitesse = 2.5f;
+            attackingRangeDistance = 20f;
 
     }
 }

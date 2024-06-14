@@ -10,6 +10,7 @@ public class GuerrierNu :  IUnitType
     public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
+    public float attackingRangeDistance {get; set; }
     public GuerrierNu ()
     {
             vie = 160;
@@ -18,6 +19,7 @@ public class GuerrierNu :  IUnitType
             degatMelee = 34;
             degatDistance = 0;
             vitesse = 2;
+            attackingRangeDistance = 0;
 }
 
 
