@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -1117,10 +1117,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: cc860000
+    m_LastClickedInstanceID: 34508
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300007e7e0000727e0000ae7a0000fa960000e4890000fc82000000000000
+    m_ExpandedInstanceIDs: c62300007e7e0000727e0000ae7a0000fa960000e4890000fc8200000000000002870000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
