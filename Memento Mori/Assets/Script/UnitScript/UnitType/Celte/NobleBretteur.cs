@@ -7,7 +7,8 @@ public class NobleBretteur : IUnitType
     public int vie{get;set;} 
     public int moral{get;set;}
     public int armure{get;set;}
-    public int degat{get;set;}
+    public int degatMelee { get; set; }
+    public int degatDistance { get; set; }
     public float vitesse{get;set;}
 
     public NobleBretteur ()
@@ -15,7 +16,8 @@ public class NobleBretteur : IUnitType
             vie = 160;
             moral = 70;
             armure = 75;
-            degat = 34;
+            degatMelee = 34;
+            degatDistance = 0;
             vitesse = 1.5f;
  }
  

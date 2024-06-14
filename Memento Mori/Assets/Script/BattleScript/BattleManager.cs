@@ -9,6 +9,7 @@ public class ProvinceBattle
     public GameObject ButtonName;
     public GameObject Next;
 
+
     public ProvinceBattle(GameObject button,GameObject next)
     {
         ButtonName = button;
@@ -29,6 +30,8 @@ public class BattleManager : MonoBehaviour
     public GameObject AstiusButton;
 
     public ProvinceBattle Current;
+    public RecapitulatifScript recap;
+    public GameObject UnitSelectionBox;
 
     private List<ProvinceBattle> ListProv;
     List<Button> ListButton;
@@ -37,6 +40,8 @@ public class BattleManager : MonoBehaviour
     public BattleEnd battleEnd;
 
     public GameObject EscapeMenu;
+    public GameObject MusicManager;
+    public OpinionManager opinionManager;
 
     void Start()
     {   
@@ -59,6 +64,9 @@ public class BattleManager : MonoBehaviour
 
     public void BattleButtonStart(int ID)
     {
+        UnitSelectionBox.SetActive(true);
+        MusicManager.GetComponent<MusicScriptManager>().RightToPlay = false;
+       
         battleStart.BattleProvinceStart(ID);
         Current = ListProv[ID];
     }
@@ -67,13 +75,22 @@ public class BattleManager : MonoBehaviour
     {
         if(win && Current!=null)
         {
-            Debug.Log("TEST");
             Current.Next.SetActive(true);
             Current.ButtonName.SetActive(false);
+            opinionManager.SenatOpinion +=10;
+            recap.Victory +=1;
+        
         }
+        else
+        {
+            recap.Defeat +=1;
+            opinionManager.SenatOpinion -=25;
+        }
+        UnitSelectionBox.SetActive(false);
         battleEnd.BattleProvinceEnd();
         Current = null;
         EscapeMenu.SetActive(false);
+        MusicManager.GetComponent<MusicScriptManager>().RightToPlay = true;
     }
 
 
