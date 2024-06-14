@@ -9,6 +9,9 @@ public class Sakas :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public float vitesse{get;set;}
+    public int degatMelee { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int degatDistance { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public float attackingRangeDistance { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     public Sakas ()
     {
