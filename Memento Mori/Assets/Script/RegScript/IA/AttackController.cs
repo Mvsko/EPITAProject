@@ -10,23 +10,30 @@ public class AttackController : MonoBehaviour
     public Regiment regiment;
     public int DamageMelee;               // Dégâts infligés par cette unité
 
+    public int DamageDistance; 
+
     public List<Collider> EnemyCollider = new List<Collider>();
     public List<Collider> AllyCollider = new List<Collider>();
     private List<string> WeakRegimentType = new List<string>(){"Chasseur","Frondeur","Onagre","BalisteRomaine"};
     private List<string> CavRegimentType = new List<string>(){"Equites","Trimarcisia"};
     NavMeshAgent agent;  
+
+
     
     // Méthode appelée lorsque le collider de cet objet entre en collision avec un regiment
 
     void Start()
     {
+        targetToAttack = null;
         agent = GetComponent<NavMeshAgent>();
-       
+
+
+        
     }
-    
     private void OnTriggerEnter(Collider other)
     {
         DamageMelee  =  regiment.unit.degatMelee; 
+        DamageDistance = regiment.unit.degatDistance;
 
         if(other.gameObject.layer == LayerMask.NameToLayer("Clickable"))
         {
@@ -48,19 +55,14 @@ public class AttackController : MonoBehaviour
                         if(other.gameObject.transform.GetComponent<AttackController>().targetToAttack == gameObject.transform)
                         {
                             
-                            /*
-                            if(other.gameObject.transform.GetComponent<Regiment>().unit.degat > regiment.unit.degat && other.transform.position.y > regiment.transform.position.y+1)
-                            {  
-                               
-                            }
-                            */
                             //Contre Attaque
-                            if((EnemyCollider.Count < AllyCollider.Count||other.gameObject.transform.GetComponent<Regiment>().unit.degatMelee < regiment.unit.degatMelee)
+                            if((EnemyCollider.Count <= AllyCollider.Count+1||other.gameObject.transform.GetComponent<Regiment>().unit.degatMelee < regiment.unit.degatMelee)
                              && WeakRegimentType.Contains(regiment.typeRegiment)==false)
                             {
                                 Debug.Log("Contre Attack");
                                 agent.SetDestination(transform.position) ;
                                 targetToAttack = other.transform;
+
                             }
 
                             //Battre en retraitre
@@ -81,7 +83,7 @@ public class AttackController : MonoBehaviour
                         { 
                             
                             //Attaque en cas de majorité à proximité
-                            if(EnemyCollider.Count < AllyCollider.Count+1)
+                            if(EnemyCollider.Count <= AllyCollider.Count+2)
                             {
                                 Debug.Log("Attaquer");
                                 targetToAttack = other.transform;
@@ -92,7 +94,8 @@ public class AttackController : MonoBehaviour
                     else
                     {       
                         if(WeakRegimentType.Contains(targetToAttack.gameObject.transform.GetComponent<Regiment>().typeRegiment)== false &&
-                            WeakRegimentType.Contains(other.gameObject.transform.GetComponent<Regiment>().typeRegiment))
+                            WeakRegimentType.Contains(other.gameObject.transform.GetComponent<Regiment>().typeRegiment)&&
+                            targetToAttack.gameObject.transform.GetComponent<AttackController>().targetToAttack != gameObject.transform)
                         {
                             Debug.Log("Attaquer Un Choix");
                             targetToAttack = other.transform;
@@ -167,5 +170,12 @@ public class AttackController : MonoBehaviour
        // Gismos de fin d'attaque (Attack Stop)
        Gizmos.color = Color.blue;
        Gizmos.DrawWireSphere(transform.position, 3f);
+
+        // Gismos d'attaque à Distance
+       if(regiment.unit.degatDistance > 0)
+       {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, regiment.unit.attackingRangeDistance);
+       }
     }
 }

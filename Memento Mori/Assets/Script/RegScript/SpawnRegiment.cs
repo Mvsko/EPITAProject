@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpawnRegiment : MonoBehaviour
 {
     public GameObject regiment;
+    public GameObject EnemyRegiment;
     // Start is called before the first frame update
     public Camera cam;
     public LayerMask ground;
@@ -50,6 +51,13 @@ public class SpawnRegiment : MonoBehaviour
         EspacementVerticale = new Vector3(0,0,3);
         NbRegimentCreate = 0;
         Colonne = 0;
+    }
+
+    public void SpawnEnemyRegimentMethod(string type, Vector3 vector3)
+    {
+        GameObject Enemy = Instantiate(EnemyRegiment,vector3,Quaternion.identity );
+        Enemy.GetComponent<Regiment>().typeRegiment = type;
+        Enemy.transform.GetChild(4).transform.GetChild(0).GetComponent<FaceCamera>().facingCamera = cam;
     }
     public void SpawnRegimentMethod(string type)
     {

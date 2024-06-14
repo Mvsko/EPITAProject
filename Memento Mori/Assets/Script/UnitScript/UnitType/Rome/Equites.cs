@@ -10,7 +10,7 @@ public class Equites :  IUnitType
      public int degatMelee { get; set; }
     public int degatDistance { get; set; }
     public float vitesse{get;set;}
-
+public float attackingRangeDistance {get; set; }
     public Equites ()
     {
             vie = 80;
@@ -19,6 +19,7 @@ public class Equites :  IUnitType
             degatMelee = 40;
             degatDistance=0;
             vitesse = 3.5f;
+            attackingRangeDistance = 0;
 
     }
 

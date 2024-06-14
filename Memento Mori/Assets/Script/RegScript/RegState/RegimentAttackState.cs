@@ -12,6 +12,7 @@ public class RegimentAttackState : StateMachineBehaviour
     AttackController attackController;
 
     public float stopAttackingDistance;
+    public float stopAttackingRangeDistance;
 
     public float attackRate = 2f;
     private float attackTimer;
@@ -20,8 +21,16 @@ public class RegimentAttackState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        stopAttackingDistance = 3f;
+
+      stopAttackingRangeDistance = animator.gameObject.GetComponent<Regiment>().unit.model.attackingRangeDistance;
+      if (stopAttackingDistance > 0)
+      {
+         stopAttackingRangeDistance+=1f;
+      }
+       
        agent = animator.GetComponent<NavMeshAgent>();
        attackController = animator.GetComponent<AttackController>();
+      agent.SetDestination(animator.transform.position);
        
     }
 
@@ -37,21 +46,38 @@ public class RegimentAttackState : StateMachineBehaviour
        if(animator.transform.GetComponent<RegimentMovement>().isCommandedToMove == false && attackController != null && attackController.targetToAttack != null)
        {
          
-         //LookatTarget();
+         LookatTarget();
          
+         float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
 
          // Reste en mvt vers l'ennemi
-         if(animator.GetComponent<Regiment>().dead == false)
+         /*
+         if(animator.GetComponent<Regiment>().dead == false && stopAttackingRangeDistance == 0)
          {
-            agent.SetDestination(attackController.targetToAttack.position);
+            Vector3 mid = (attackController.targetToAttack.transform.position-animator.transform.position);
+            agent.SetDestination(animator.transform.position + mid);
          }
+         */
          
-
-
+         
+         
          if (attackTimer <= 0)
          {
-            Attack();
+            if(distanceFromTarget < stopAttackingDistance) 
+            {
+               Debug.Log("MeleeAttack");
+               MeleeAttack(animator);
+
+            }
+            else
+            {
+               Debug.Log("RangeAttack");
+               RangeAttack(animator);
+               
+            }
             attackTimer = 10f/attackRate;
+            
+            
          }
          else
          {
@@ -61,9 +87,9 @@ public class RegimentAttackState : StateMachineBehaviour
 
          // Should unit still attack state
          
-         float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
+         
             
-         if (distanceFromTarget >= stopAttackingDistance || attackController == null  )
+         if ((distanceFromTarget >= stopAttackingDistance && distanceFromTarget >= stopAttackingRangeDistance) || attackController == null  )
          {
             //Debug.Log("Follow State ");
             animator.SetBool("IsAttacking",false);
@@ -71,12 +97,20 @@ public class RegimentAttackState : StateMachineBehaviour
       }
    }
 
-   private void Attack()
+   private void MeleeAttack(Animator animator)
    {
-      var damageToInflict = attackController.DamageMelee;
+      var damageToInflict = animator.GetComponent<Regiment>().unit.degatMelee;
       // Actually Attack Unit
       attackController.targetToAttack.GetComponent<Regiment>().TakeDamage(damageToInflict);
    }
+
+   private void RangeAttack(Animator animator)
+   {
+      var damageToInflict = animator.GetComponent<Regiment>().unit.degatDistance;
+      // Actually Attack Unit
+      attackController.targetToAttack.GetComponent<Regiment>().TakeDamage(damageToInflict);
+   }
+
 
     private void LookatTarget()
     {

@@ -14,14 +14,16 @@ public class RTSCameraController : MonoBehaviour
     [SerializeField] Transform cameraTransform;
     public Transform followTransform;
     Vector3 newPosition;
+
+    public Vector3 InstantPosition;
     Vector3 dragStartPosition;
     Vector3 dragCurrentPosition;
  
     [Header("Optional Functionality")]          
     // Les differentes façons de bouger la camera (bool pour activer ou desactiver)
-    [SerializeField] bool moveWithKeyboad;
-    [SerializeField] bool moveWithEdgeScrolling;
-    [SerializeField] bool moveWithMouseDrag;
+   public bool moveWithKeyboad;
+    public bool moveWithEdgeScrolling;
+    public bool moveWithMouseDrag;
  
     [Header("Keyboard Movement")]
     [SerializeField] float fastSpeed = 0.1f;       //Viariable de vitesse
@@ -55,25 +57,36 @@ public class RTSCameraController : MonoBehaviour
         newPosition = transform.position;
  
         movementSpeed = normalSpeed;
+        moveWithMouseDrag = false;
+        moveWithKeyboad = false;
+        moveWithEdgeScrolling = false;
     }
  
     private void Update()
     {
-        // Autoriser la caméra à suivre la cible (changé la methode au début)
-        if (followTransform != null)
-        {
-            transform.position = followTransform.position;
-        }
-        // Nous laisse contrôler la caméra(libre mouvement)
-        else
-        {
-            HandleCameraMovement();
-        }
+            // Autoriser la caméra à suivre la cible (changé la methode au début)
+            if (followTransform != null)
+            {
+                transform.position = followTransform.position;
+            }
+            // Nous laisse contrôler la caméra(libre mouvement)
+            else
+            {
+                HandleCameraMovement();
+            }
  
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            followTransform = null;
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                followTransform = null;
+            }
+        
+    }
+
+    public void Teleport(Vector3 InstantPosition)
+    {
+        transform.position = InstantPosition;
+        newPosition = InstantPosition;
+
     }
     //Les differents types de mouvements pour la camera
     void HandleCameraMovement()
@@ -175,7 +188,7 @@ public class RTSCameraController : MonoBehaviour
                 }
             }
         }
- 
+
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSensitivity);
         //Si nous avons un moniteur supplémentaire, nous ne voulons pas quitter les limites de l'écran
         Cursor.lockState = CursorLockMode.Confined; 

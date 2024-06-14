@@ -17,6 +17,7 @@ public class  PlayerInventory : MonoBehaviour
     //Référence Monaitaire Affichage
     public GameObject IncomePositive;
     public GameObject IncomeNegative;
+    public OpinionManager opinionManager;
     public Text moneyText;  
     
     
@@ -46,7 +47,7 @@ public class  PlayerInventory : MonoBehaviour
                                            };
         Sales = 0;
         Income = 5;
-        AddRegimentInventory(0,1);
+        AddRegimentInventory(0,3);
         
 
     }
@@ -57,15 +58,18 @@ public class  PlayerInventory : MonoBehaviour
         if (moneyText != null)              
         {
             moneyText.text = $"{money}";
-            if( Income - Sales > 0 )
+            
+            if( Income - Sales*(100/((int)opinionManager.RegionOpinion+1)) > 0 )
             {
                 IncomePositive.SetActive(true);
                 IncomeNegative.SetActive(false);
             }
             else
             {
-                if(Income - Sales < 0)
+                
+                if(Income - Sales*((int)opinionManager.RegionOpinion+1) < 0)
                 {
+                    
                     IncomePositive.SetActive(false);
                     IncomeNegative.SetActive(true);
                 }
