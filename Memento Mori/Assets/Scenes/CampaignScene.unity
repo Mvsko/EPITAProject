@@ -1132,7 +1132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &162065810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3098,6 +3098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41179f1fdb913a748ba068b55d7acddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalLobby: {fileID: 0}
+  multiLobby: {fileID: 0}
 --- !u!82 &357515342
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3794,7 +3796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &390745071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4029,7 +4031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &416773314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4966,7 +4968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &530371747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8661,7 +8663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &892875019
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12617,7 +12619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1116596718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20599,7 +20601,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f89dc64f55b16d949bf7f8c7163be159, type: 3}
   - {fileID: 8300000, guid: 3ee2363a7bdd969478c79f8a01c60800, type: 3}
   randomPlay: 1
-  RightToPlay: 1
+  RightToPlay: 0
 --- !u!82 &1874184263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20804,7 +20806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1894252995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25922,6 +25924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41179f1fdb913a748ba068b55d7acddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalLobby: {fileID: 0}
+  multiLobby: {fileID: 0}
 --- !u!224 &5923127877115228711
 RectTransform:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class RegimentSelectionManager : MonoBehaviour
 
     public UIRegimentInformation RegimentInformation;
 
+
     public bool attackCursorVisible;
     public enum mouvementTypeList
     {
@@ -274,9 +275,15 @@ public class RegimentSelectionManager : MonoBehaviour
         return mouvementType;
     }
 
-    public void killedRegiment (GameObject regiment)
-    {   
-        if(regiment.tag == "Team1")
+    public void killedRegiment(GameObject regiment)
+    {
+        if (regiment.tag == "Team1")
+        {
+            regimentsOwnedKilled.Add(regiment.GetComponent<Regiment>().typeRegiment);
+            regimentsSelected.Remove(regiment);
+            allRegimentsList.Remove(regiment);
+        }
+        else if (regiment.tag == "Team2")
         {
             regimentsOwnedKilled.Add(regiment.GetComponent<Regiment>().typeRegiment);
             regimentsSelected.Remove(regiment);

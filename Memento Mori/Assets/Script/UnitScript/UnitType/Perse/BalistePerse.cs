@@ -9,9 +9,9 @@ public class BalistePerse :  IUnitType
     public int armure{get;set;}
     public int degat{get;set;}
     public float vitesse{get;set;}
-    public int degatMelee { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public int degatDistance { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public float attackingRangeDistance { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int degatMelee { get; set; }
+    public int degatDistance { get; set; }
+    public float attackingRangeDistance { get; set; }
 
     public BalistePerse()
     {
@@ -20,5 +20,9 @@ public class BalistePerse :  IUnitType
             armure = 40;
             degat = 35;
             vitesse = 1;
+
+        degatMelee = 10;
+        degatDistance = 35;
+        attackingRangeDistance = 25f;
     }
 }
