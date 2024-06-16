@@ -226,7 +226,7 @@ public class RTSCameraController : MonoBehaviour
             currentCursor = newCursor;
         }
     }
- 
+
  
     
     private void HandleMouseDragInput()

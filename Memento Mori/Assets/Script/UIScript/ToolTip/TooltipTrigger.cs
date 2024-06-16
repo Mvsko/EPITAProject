@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class TooltipTrigger : MonoBehaviour , IPointerEnterHandler, IPointerExit
     }
     public void OnPointerExit(PointerEventData eventData) 
     { 
-        
         ToolTipSystem.Hide();
     }
+    
 }
