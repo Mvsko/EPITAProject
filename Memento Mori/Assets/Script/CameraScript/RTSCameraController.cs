@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
- 
+using UnityEngine.SceneManagement;
+
 public class RTSCameraController : MonoBehaviour
 {
     public static RTSCameraController instance;
@@ -60,8 +61,19 @@ public class RTSCameraController : MonoBehaviour
         moveWithMouseDrag = false;
         moveWithKeyboad = false;
         moveWithEdgeScrolling = false;
+
+        ActivateMovementOptions();
     }
- 
+
+    private void ActivateMovementOptions()
+    {
+        if (SceneManager.GetActiveScene().name == "MultiScene")
+        {
+            moveWithMouseDrag = true;
+            moveWithKeyboad = true;
+        }
+    }
+
     private void Update()
     {
             // Autoriser la caméra à suivre la cible (changé la methode au début)

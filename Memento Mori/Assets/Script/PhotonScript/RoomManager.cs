@@ -1,11 +1,22 @@
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public GameObject errorPopup; // Référence à un pop-up d'erreur dans l'UI
+    public GameObject multiManagerPrefab; // Référence au prefab de MultiManager
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "MultiScene")
+        {
+            // Si nous sommes dans MultiScene, configurez le MultiManager
+            SetupMultiManager();
+        }
+    }
 
     // Méthode pour créer une salle avec un nom unique
     public void CreateRoom()
@@ -25,7 +36,36 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined Room: " + PhotonNetwork.CurrentRoom.Name);
-        PhotonNetwork.LoadLevel("MultiScene"); // Remplacez par le nom de votre scène de jeu
+
+        if (SceneManager.GetActiveScene().name == "StartScene")
+        {
+            PhotonNetwork.LoadLevel("MultiScene"); // Charge MultiScene
+        }
+        else if (SceneManager.GetActiveScene().name == "MultiScene")
+        {
+            SetupMultiManager(); // Configure le MultiManager si nous sommes déjà dans MultiScene
+        }
+    }
+
+    private void SetupMultiManager()
+    {
+
+        // Assurez-vous que le MultiManager est dans la scène
+        MultiManager multiManager = FindObjectOfType<MultiManager>();
+        if (multiManager == null)
+        {
+            GameObject multiManagerObject = Instantiate(multiManagerPrefab);
+            multiManager = multiManagerObject.GetComponent<MultiManager>();
+        }
+
+        if (multiManager != null)
+        {
+            multiManager.OnPlayerJoinedRoom();
+        }
+        else
+        {
+            Debug.LogError("MultiManager is not found or not properly instantiated.");
+        }
     }
 
     // Callback lorsque la jonction aléatoire échoue

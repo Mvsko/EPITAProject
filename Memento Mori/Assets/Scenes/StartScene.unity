@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorPopup: {fileID: 0}
+  multiManagerPrefab: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorPopup: {fileID: 0}
+  multiManagerPrefab: {fileID: 0}
 --- !u!1 &883960395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorPopup: {fileID: 0}
+  multiManagerPrefab: {fileID: 0}
 --- !u!1 &1044305681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorPopup: {fileID: 0}
+  multiManagerPrefab: {fileID: 1793928571511825642, guid: 38a3f89db51201b41ad1a9c0bbab313b,
+    type: 3}
 --- !u!114 &1408513247
 MonoBehaviour:
   m_ObjectHideFlags: 0
