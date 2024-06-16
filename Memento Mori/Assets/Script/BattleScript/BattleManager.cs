@@ -47,18 +47,22 @@ public class BattleManager : MonoBehaviour
     public int CurrentID;
 
     public GameObject inBattleScript;
- 
+    public GameObject MenuWonCampaign;
+
+    public GameObject Radar;
+    private bool Radarbool;
+
     List<Vector3> SpawnList = new List<Vector3>(){
                                                 new Vector3(337,16f,70f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f),
-                                                new Vector3(100f,16f,100f)};
+                                                new Vector3(380f,16f,144f),
+                                                new Vector3(350f,16f,330f),
+                                                new Vector3(390f,16f,382f),
+                                                new Vector3(594f,16f,230f),
+                                                new Vector3(453f,16f,100f),
+                                                new Vector3(537f,16f,184f),
+                                                new Vector3(492f,16f,306f),
+                                                new Vector3(438f,16f,418f),
+                                                new Vector3(425f,16f,317f)};
 
     void Start()
     {   
@@ -75,10 +79,7 @@ public class BattleManager : MonoBehaviour
         ProvinceBattle Astius = new ProvinceBattle(AstiusButton,AstiusButton);
         ListProv = new List<ProvinceBattle>(){Frisons,Nerviens,Sequane,Cherusque,Boiens,Ruges,Sueves,Gutone,Lugiens,Astius};
         Current = null;
-        
-        
-
-
+        Radar.SetActive(false);
         
     }
 
@@ -103,6 +104,11 @@ public class BattleManager : MonoBehaviour
 
     }
 
+
+    
+
+    
+
     public void ReSpawn()
     {
         CameraController.GetComponent<RTSCameraController>().moveWithMouseDrag = false;
@@ -115,6 +121,8 @@ public class BattleManager : MonoBehaviour
 
     public void AfterMatch(bool win)
     {
+         Radar.SetActive(false);
+         Radarbool = false;
         inBattleScript.SetActive(false);
         CameraController.GetComponent<RTSCameraController>().moveWithMouseDrag = false;
         CameraController.GetComponent<RTSCameraController>().moveWithKeyboad = false;
@@ -125,6 +133,10 @@ public class BattleManager : MonoBehaviour
             opinionManager.SenatOpinion +=10;
             opinionManager.RegionOpinion -=15;
             recap.Victory +=1;
+            if(CurrentID == 9)
+            {
+                MenuWonCampaign.SetActive(true);
+            }
         
         }
         else
@@ -152,7 +164,20 @@ public class BattleManager : MonoBehaviour
 
     }
 
+    public void RadarActive()
+    {
+        if(Radarbool)
+        {
+            Radar.SetActive(false);
+            Radarbool =false;
 
+        }
+        else
+        {
+            Radar.SetActive(true);
+            Radarbool = true;
+        }
+    }
 
 
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopAttackingDistance: 0
+  stopAttackingRangeDistance: 0
   attackRate: 2
 --- !u!114 &-5889374136010454883
 MonoBehaviour:
@@ -88,7 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c807bef2b97bb284ba3943c3821f37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackingDistance: 1
+  attackingMeleeDistance: 0
+  attackingRangeDistance: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
