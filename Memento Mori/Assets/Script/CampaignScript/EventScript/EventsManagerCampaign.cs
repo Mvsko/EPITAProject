@@ -46,6 +46,14 @@ public class EventsManagerCampaign : MonoBehaviour
         TimeSaisonId +=1;
         
         Inventory.money += Inventory.Income - Inventory.Sales*(100/((int)opinionManager.RegionOpinion+1));
+
+        if(Inventory.money < 0)
+        {
+            opinionManager.MilitaryOpinion -= 10;
+        }
+
+        opinionManager.SenatOpinion -=5;
+        opinionManager.RegionOpinion +=1;
         
         if (TimeSaisonId > 3)
         {
@@ -56,7 +64,7 @@ public class EventsManagerCampaign : MonoBehaviour
             TimePeriod = "Apr J.C";
             }
         }
-
+        
        
         // Declenche un événement aléatoire
         EventTrigger();
@@ -111,6 +119,10 @@ public class EventsManagerCampaign : MonoBehaviour
         {
             opinionManager.RegionOpinion +=5;
             Inventory.money -= Random.Range(2,5);
+        }
+        else
+        {
+            opinionManager.RegionOpinion -= 5;
         }
     }
 

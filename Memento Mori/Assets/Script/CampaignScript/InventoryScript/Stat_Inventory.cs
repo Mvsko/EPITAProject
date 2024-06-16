@@ -27,18 +27,18 @@ public class  PlayerInventory : MonoBehaviour
 
     // Référence Monaitaire des régiments
     private List<string> RegimentType = new List<string>{"None","Hastati", "Triarii", "Frondeur","Equites","BalisteRomaine","Legat"};
-    private int HastatiPrice = 1;
-    private int TriariiPrice = 1;
+    private int HastatiPrice = 2;
+    private int TriariiPrice = 4;
     private int FrondeurPrice = 1;
-    private int EquitesPrice = 1;
-    private int BalistePrice = 1;
-    private int LegatPrice= 1;
+    private int EquitesPrice = 3;
+    private int BalistePrice = 3;
+    private int LegatPrice= 2;
 
 
     void Start()
     {
         // Initialisation des statistiques
-        money = 10;
+        money = 12;
         RegimentsOwned =  new List<string>{"None","None","None","None","None",
                                            "None","None","None","None","None",
                                            "None","None","None","None","None",
@@ -47,7 +47,7 @@ public class  PlayerInventory : MonoBehaviour
                                            };
         Sales = 0;
         Income = 5;
-        AddRegimentInventory(0,3);
+        AddRegimentInventory(0,6);
         
 
     }
@@ -79,6 +79,11 @@ public class  PlayerInventory : MonoBehaviour
                     IncomePositive.SetActive(false);
                 }   
             }
+        }
+        if(money <= -10)
+        {
+            money = 0;
+            opinionManager.SenatOpinion -= 35;
         }
      }
     private int RegimentTypePrice (string typeString)
@@ -137,6 +142,7 @@ public class  PlayerInventory : MonoBehaviour
             RegimentsOwned[SlotID] = "None";
             slot.IconManage(0);
             Sales -= 1;
+            money += 1;
             return true;
         }
         return false;

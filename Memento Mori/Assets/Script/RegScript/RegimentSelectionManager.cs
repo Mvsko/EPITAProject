@@ -26,6 +26,12 @@ public class RegimentSelectionManager : MonoBehaviour
 
 
     public bool attackCursorVisible;
+
+    public AudioSource audioSource;
+
+    public AudioClip SelectionSound;
+    public AudioClip AttackSound;
+
     public enum mouvementTypeList
     {
         None = 0,
@@ -112,9 +118,13 @@ public class RegimentSelectionManager : MonoBehaviour
 
            if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable)&& hit.collider.gameObject.CompareTag("Team1"))
            {
+                audioSource.clip = SelectionSound;
+                audioSource.Play();
                 if(Input.GetKey(KeyCode.LeftShift) )
                 {
+                    
                     MultiSelect(hit.collider.gameObject);
+
                 }
                 else 
                 {
@@ -158,6 +168,10 @@ public class RegimentSelectionManager : MonoBehaviour
                 Debug.Log("Enemy hovered with mouse");
 
                 attackCursorVisible = true;
+                audioSource.clip = AttackSound;
+                audioSource.Play();
+                
+                
 
                 
                 
