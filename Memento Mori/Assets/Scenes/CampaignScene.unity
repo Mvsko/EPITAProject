@@ -9866,7 +9866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu Principale
+  m_text: Menu Principal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15340,7 +15340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1091123950
 Transform:
   m_ObjectHideFlags: 0
@@ -27984,7 +27984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: En quittant vous perderez votre progression
+  m_text: En quittant vous perdrez votre progression
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5afab2b67b941a94f8c6e11e723289d4, type: 2}
   m_sharedMaterial: {fileID: -1424895509922538129, guid: 5afab2b67b941a94f8c6e11e723289d4,

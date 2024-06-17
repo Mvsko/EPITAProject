@@ -17,6 +17,7 @@ public class AttackController : MonoBehaviour
     private List<string> WeakRegimentType = new List<string>(){"Chasseur","Frondeur","Onagre","BalisteRomaine"};
     private List<string> CavRegimentType = new List<string>(){"Equites","Trimarcisia"};
     NavMeshAgent agent;  
+    private float timer;
 
 
     
@@ -26,6 +27,7 @@ public class AttackController : MonoBehaviour
     {
         targetToAttack = null;
         agent = GetComponent<NavMeshAgent>();
+        timer = 3f;
 
 
         
@@ -43,13 +45,14 @@ public class AttackController : MonoBehaviour
                 
                 if (gameObject.transform.GetComponent<Regiment>().IAEnabled)
                 {
+                    //Stock en mémoire a court terme l'ennemi
+                    EnemyCollider.Add(other);
                     if( targetToAttack == null)
                     {
-                        //Stock en mémoire a court terme l'ennemi
-                        if(EnemyCollider.Contains(other)==false)
-                        {
-                            EnemyCollider.Add(other);
-                        }
+                        
+                        
+                        
+                        
 
                         //Si l'ennemi m'attaque
                         if(other.gameObject.transform.GetComponent<AttackController>().targetToAttack == gameObject.transform)
@@ -157,6 +160,42 @@ public class AttackController : MonoBehaviour
         
         }
         
+    }
+
+    void Update()
+    {
+        if(timer<=0f)
+        {
+            if(EnemyCollider.Count > 2 && targetToAttack == null)
+            {
+                int i = 0;
+                while(i<EnemyCollider.Count && i <2)
+                {
+                    if(EnemyCollider[i]== null)
+                    {
+                        EnemyCollider.RemoveAt(i);
+                    }
+                    i+=1;
+                }
+                if(EnemyCollider[0]!= null &&EnemyCollider[0].gameObject.layer ==  LayerMask.NameToLayer("Clickable"))
+                {
+                    targetToAttack= EnemyCollider[0].transform;
+                }
+                else
+                {
+                    if(EnemyCollider[1]!= null&&EnemyCollider[1].gameObject.layer ==  LayerMask.NameToLayer("Clickable"))
+                    {
+                        targetToAttack= EnemyCollider[1].transform;
+                    }
+                }
+                
+            }
+            timer = 3f;
+        }
+        else
+        {
+            timer -=Time.deltaTime;
+        }
     }
     // Méthode appelée lors du dessin de gizmos dans l'éditeur
     private void OnDrawGizmos()
