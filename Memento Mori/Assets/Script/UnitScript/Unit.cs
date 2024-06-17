@@ -43,8 +43,36 @@ public class Unit : IUnitType
         {
           model = new Frondeur();  
         }
+
+        //PERSE
+
+        if (type == "ArcherPerse")
+        {
+            model = new ArcherPerse();
+        }
+        if (type == "BalistePerse")
+        {
+            model = new BalistePerse();
+        }
+        if (type == "Kardake")
+        {
+            model = new Kardake();
+        }
+        if (type == "Melophore")
+        {
+            model = new Melophore();
+        }
+        if (type == "MelophoreMede")
+        {
+            model = new MelophoreMede();
+        }
+        if (type == "Sakas")
+        {
+            model = new Sakas();
+        }
+
         //CELTE
-        if(type == "Bretteur")
+        if (type == "Bretteur")
         {
           model = new Bretteur();  
         }
@@ -70,6 +98,13 @@ public class Unit : IUnitType
         }
         
 
+        if (model == null)
+        {
+            Debug.Log("null log " + type);
+        } else
+        {
+            Debug.Log(model.vie);
+        }
 
         vie = model.vie;
         armure = model.armure;

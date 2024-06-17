@@ -24,7 +24,14 @@ public class RegimentSelectionManager : MonoBehaviour
 
     public UIRegimentInformation RegimentInformation;
 
+
     public bool attackCursorVisible;
+
+    public AudioSource audioSource;
+
+    public AudioClip SelectionSound;
+    public AudioClip AttackSound;
+
     public enum mouvementTypeList
     {
         None = 0,
@@ -111,9 +118,13 @@ public class RegimentSelectionManager : MonoBehaviour
 
            if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable)&& hit.collider.gameObject.CompareTag("Team1"))
            {
+                audioSource.clip = SelectionSound;
+                audioSource.Play();
                 if(Input.GetKey(KeyCode.LeftShift) )
                 {
+                    
                     MultiSelect(hit.collider.gameObject);
+
                 }
                 else 
                 {
@@ -157,6 +168,10 @@ public class RegimentSelectionManager : MonoBehaviour
                 Debug.Log("Enemy hovered with mouse");
 
                 attackCursorVisible = true;
+                audioSource.clip = AttackSound;
+                audioSource.Play();
+                
+                
 
                 
                 
@@ -274,9 +289,15 @@ public class RegimentSelectionManager : MonoBehaviour
         return mouvementType;
     }
 
-    public void killedRegiment (GameObject regiment)
-    {   
-        if(regiment.tag == "Team1")
+    public void killedRegiment(GameObject regiment)
+    {
+        if (regiment.tag == "Team1")
+        {
+            regimentsOwnedKilled.Add(regiment.GetComponent<Regiment>().typeRegiment);
+            regimentsSelected.Remove(regiment);
+            allRegimentsList.Remove(regiment);
+        }
+        else if (regiment.tag == "Team2")
         {
             regimentsOwnedKilled.Add(regiment.GetComponent<Regiment>().typeRegiment);
             regimentsSelected.Remove(regiment);
